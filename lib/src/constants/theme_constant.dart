@@ -19,6 +19,17 @@ final ThemeData theme = ThemeData(
   scaffoldBackgroundColor: const Color(0xffd0b562),
   colorScheme:
       const ColorScheme.dark().copyWith(primary: const Color(0xffd0b562)),
+  inputDecorationTheme: const InputDecorationTheme(
+    labelStyle: TextStyle(
+      color: Colors.black,
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.black54),
+    ),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.black45),
+    ),
+  ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xffd0b562),
     selectedItemColor: Colors.white,
@@ -35,7 +46,7 @@ final ThemeData theme = ThemeData(
     labelColor: Colors.white,
   ),
   cardTheme: const CardTheme(
-    color: Color(0xff352d5b),
+    color: Color(0xffd0b562),
   ),
-  errorColor: Colors.redAccent,
+  errorColor: Colors.red,
 );

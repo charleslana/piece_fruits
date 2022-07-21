@@ -10,10 +10,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     Key? key,
     required this.title,
     this.isGoBack = false,
+    this.offset = 0,
   }) : super(key: key);
 
   final String title;
   final bool isGoBack;
+  final double offset;
 
   @override
   Size get preferredSize => const Size.fromHeight(56);
@@ -30,12 +32,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(Icons.arrow_back_ios_new),
             )
           : null,
-      title: Text(
-        title,
-        style: const TextStyle(color: Colors.black),
-      ),
+      title: Text(title),
       centerTitle: true,
-      backgroundColor: Colors.transparent,
+      backgroundColor: offset > 40 ? Colors.black87 : Colors.transparent,
       elevation: 0,
       actions: [
         DropdownButtonHideUnderline(
@@ -45,7 +44,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 .map(
                   (item) => DropdownMenuItem<LanguageModel>(
                     value: item,
-                    child: Text(item.language),
+                    child: Text(
+                      item.language,
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 )
                 .toList(),

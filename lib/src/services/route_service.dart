@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:piece_fruits/src/bindings/language_binding.dart';
+import 'package:piece_fruits/src/bindings/loading_overlay_binding.dart';
+import 'package:piece_fruits/src/bindings/login_binding.dart';
 import 'package:piece_fruits/src/bindings/splashscreen_binding.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/pages/login_page.dart';
@@ -26,6 +28,8 @@ class RouteService {
       transition: Transition.rightToLeft,
       bindings: [
         LanguageBinding(),
+        LoadingOverlayBinding(),
+        LoginBinding(),
       ],
     );
   }
