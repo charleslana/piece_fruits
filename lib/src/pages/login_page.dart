@@ -103,6 +103,7 @@ class LoginPage extends StatelessWidget {
                           GradientButton(
                             title: 'login.page.register.button'.tr,
                             callback: () {
+                              FocusManager.instance.primaryFocus?.unfocus();
                               controller.goToTop();
                               navigate(registerRoute);
                             },

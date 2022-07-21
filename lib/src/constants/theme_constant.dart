@@ -30,6 +30,9 @@ final ThemeData theme = ThemeData(
       borderSide: BorderSide(color: Colors.black45),
     ),
   ),
+  textSelectionTheme: const TextSelectionThemeData(
+    cursorColor: Colors.black45,
+  ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xffd0b562),
     selectedItemColor: Colors.white,
