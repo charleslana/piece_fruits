@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:piece_fruits/src/bindings/language_binding.dart';
 import 'package:piece_fruits/src/bindings/loading_overlay_binding.dart';
 import 'package:piece_fruits/src/bindings/login_binding.dart';
-import 'package:piece_fruits/src/bindings/splashscreen_binding.dart';
+import 'package:piece_fruits/src/bindings/splash_screen_binding.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/pages/login_page.dart';
-import 'package:piece_fruits/src/pages/splashscreen_page.dart';
+import 'package:piece_fruits/src/pages/splash_screen_page.dart';
 
 class RouteService {
   GetPageRoute<dynamic> _getDefaultPage(RouteSettings settings) {
@@ -34,18 +34,18 @@ class RouteService {
     );
   }
 
-  GetPageRoute<dynamic> _getSplashscreenPage(RouteSettings settings) {
+  GetPageRoute<dynamic> _getSplashScreenPage(RouteSettings settings) {
     return GetPageRoute(
-      page: () => const SplashscreenPage(),
+      page: () => const SplashScreenPage(),
       settings: settings,
-      binding: SplashscreenBinding(),
+      binding: SplashScreenBinding(),
     );
   }
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case splashscreenRoute:
-        return _getSplashscreenPage(settings);
+      case splashScreenRoute:
+        return _getSplashScreenPage(settings);
       case loginRoute:
         return _getLoginPage(settings);
       default:

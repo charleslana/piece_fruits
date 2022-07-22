@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       fallbackLocale: const Locale('en', 'US'),
       theme: theme,
       darkTheme: theme,
-      initialRoute: splashscreenRoute,
+      initialRoute: splashScreenRoute,
       defaultTransition: Transition.fade,
       onGenerateRoute: RouteService().generateRoute,
     );

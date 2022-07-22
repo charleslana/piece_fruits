@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
-import 'package:piece_fruits/src/controllers/splashscreen_controller.dart';
+import 'package:piece_fruits/src/controllers/splash_screen_controller.dart';
 
-class SplashscreenPage extends StatelessWidget {
-  const SplashscreenPage({Key? key}) : super(key: key);
+class SplashScreenPage extends StatelessWidget {
+  const SplashScreenPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.find<SplashscreenController>();
+    Get.find<SplashScreenController>();
 
     return SafeArea(
       child: Scaffold(

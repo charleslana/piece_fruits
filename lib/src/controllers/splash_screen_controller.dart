@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/utils/functions.dart';
 
-class SplashscreenController extends GetxController {
+class SplashScreenController extends GetxController {
   @override
   void onInit() {
     Timer(

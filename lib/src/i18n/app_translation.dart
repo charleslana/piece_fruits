@@ -33,7 +33,7 @@ final Map<String, String> enUS = {
   'register.page.title': 'Register',
   'register.page.email': 'Email',
   'register.page.password': 'Password',
-  'register.page.password.confirmartion': 'Confirm the password',
+  'register.page.password.confirmation': 'Confirm the password',
   'register.page.button': 'Register',
   'register.page.service.terms.text':
       'By creating an account you agree to read all ',
@@ -61,7 +61,7 @@ final Map<String, String> ptBR = {
   'register.page.title': 'Cadastre-se',
   'register.page.email': 'E-mail',
   'register.page.password': 'Senha',
-  'register.page.password.confirmartion': 'Confirme a senha',
+  'register.page.password.confirmation': 'Confirme a senha',
   'register.page.button': 'Registrar',
   'register.page.service.terms.text':
       'Ao criar uma conta você aceita ler todos os ',
@@ -90,7 +90,7 @@ final Map<String, String> esES = {
   'register.page.title': 'Registro',
   'register.page.email': 'Correo electrónico',
   'register.page.password': 'Contraseña',
-  'register.page.password.confirmartion': 'Confirmar la contraseña',
+  'register.page.password.confirmation': 'Confirmar la contraseña',
   'register.page.button': 'Registro',
   'register.page.service.terms.text': 'Al crear una cuenta, acepta leer todo ',
   'register.page.service.terms.action': 'Términos del servicio',
