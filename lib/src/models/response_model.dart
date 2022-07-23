@@ -1,18 +1,21 @@
 import 'dart:convert';
 
-ApiErrorModel apiErrorModelFromJson(String str) =>
-    ApiErrorModel.fromJson(json.decode(str));
+ResponseModel responseModelFromJson(String str) =>
+    ResponseModel.fromJson(json.decode(str));
 
-String apiErrorModelToJson(ApiErrorModel data) => json.encode(data.toJson());
+String responseModelToJson(ResponseModel data) => json.encode(data.toJson());
 
-class ApiErrorModel {
-  ApiErrorModel({
+class ResponseModel {
+  ResponseModel({
     this.status,
     this.message,
     this.value,
   });
 
-  factory ApiErrorModel.fromJson(Map<String, dynamic> json) => ApiErrorModel(
+  factory ResponseModel.decoderFromJson(dynamic json) =>
+      ResponseModel.fromJson(json);
+
+  factory ResponseModel.fromJson(Map<String, dynamic> json) => ResponseModel(
         status: json['status'],
         message: json['message'],
         value: json['value'],

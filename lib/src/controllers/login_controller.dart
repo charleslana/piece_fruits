@@ -4,7 +4,7 @@ import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/enums/toast_enum.dart';
 import 'package:piece_fruits/src/interfaces/custom_app_bar_abstract.dart';
 import 'package:piece_fruits/src/interfaces/form_validator.dart';
-import 'package:piece_fruits/src/models/api_error_model.dart';
+import 'package:piece_fruits/src/models/response_model.dart';
 import 'package:piece_fruits/src/services/encrypt_service.dart';
 import 'package:piece_fruits/src/services/login_service.dart';
 import 'package:piece_fruits/src/utils/functions.dart';
@@ -32,8 +32,6 @@ class LoginController extends GetxController
 
   @override
   void onClose() {
-    emailController.dispose();
-    passwordController.dispose();
     scrollController.dispose();
     super.onClose();
   }
@@ -71,8 +69,8 @@ class LoginController extends GetxController
       onError: (dynamic error) {
         hideLoading();
         passwordController.clear();
-        final ApiErrorModel apiErrorModel = apiErrorModelFromJson(error);
-        showToast(apiErrorModel.message!, ToastEnum.error);
+        final ResponseModel responseModel = responseModelFromJson(error);
+        showToast(responseModel.message!, ToastEnum.error);
       },
     );
   }

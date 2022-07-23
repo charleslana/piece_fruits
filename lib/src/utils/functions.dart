@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/controllers/loading_overlay_controller.dart';
 import 'package:piece_fruits/src/enums/toast_enum.dart';
-import 'package:piece_fruits/src/models/api_error_model.dart';
+import 'package:piece_fruits/src/models/response_model.dart';
 import 'package:piece_fruits/src/services/login_service.dart';
 
 void _closeToast() {
@@ -45,7 +45,7 @@ void navigateOffAll(String route) {
 }
 
 String showConnectionFailure() {
-  return apiErrorModelToJson(ApiErrorModel(
+  return responseModelToJson(ResponseModel(
     status: '503',
     message: 'connection.failure'.tr,
   ));

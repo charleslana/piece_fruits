@@ -33,6 +33,9 @@ final ThemeData theme = ThemeData(
   textSelectionTheme: const TextSelectionThemeData(
     cursorColor: Colors.black45,
   ),
+  radioTheme: RadioThemeData(
+    fillColor: MaterialStateColor.resolveWith((states) => Colors.black54),
+  ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xffd0b562),
     selectedItemColor: Colors.white,

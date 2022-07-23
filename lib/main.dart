@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/constants/theme_constant.dart';
 import 'package:piece_fruits/src/i18n/app_translation.dart';
@@ -19,7 +19,6 @@ Future<void> main() async {
     systemNavigationBarColor: Colors.black,
     statusBarColor: Colors.black,
   ));
-  await initializeDateFormatting();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
@@ -34,6 +33,12 @@ class MyApp extends StatelessWidget {
       translationsKeys: translationsKeys,
       locale: LanguageService().getLocale(),
       fallbackLocale: const Locale('en', 'US'),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: languages.map((language) => language.locale).toList(),
       theme: theme,
       darkTheme: theme,
       initialRoute: splashScreenRoute,

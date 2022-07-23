@@ -14,6 +14,9 @@ final List<LanguageModel> languages = [
 ];
 
 final Map<String, String> enUS = {
+  'gender.male': 'Male',
+  'gender.female': 'Female',
+  'gender.other': 'Other',
   'landing.page.connection': 'Connecting to the server...',
   'landing.page.version':
       'There is a new update available, please update the app on your store...',
@@ -35,6 +38,8 @@ final Map<String, String> enUS = {
   'register.page.email': 'Email',
   'register.page.password': 'Password',
   'register.page.password.confirmation': 'Confirm the password',
+  'register.page.gender': 'Gender',
+  'register.page.birth.date': 'Birth date',
   'register.page.button': 'Register',
   'register.page.service.terms.text':
       'By creating an account you agree to read all ',
@@ -43,6 +48,9 @@ final Map<String, String> enUS = {
 };
 
 final Map<String, String> ptBR = {
+  'gender.male': 'Masculino',
+  'gender.female': 'Feminino',
+  'gender.other': 'Outro',
   'landing.page.connection': 'Conectando no servidor...',
   'landing.page.version':
       'Há uma nova atualização disponível, por favor atualize a aplicação na sua loja.',
@@ -64,6 +72,8 @@ final Map<String, String> ptBR = {
   'register.page.email': 'E-mail',
   'register.page.password': 'Senha',
   'register.page.password.confirmation': 'Confirme a senha',
+  'register.page.gender': 'Gênero',
+  'register.page.birth.date': 'Data de nascimento',
   'register.page.button': 'Registrar',
   'register.page.service.terms.text':
       'Ao criar uma conta você aceita ler todos os ',
@@ -72,6 +82,9 @@ final Map<String, String> ptBR = {
 };
 
 final Map<String, String> esES = {
+  'gender.male': 'Masculino',
+  'gender.female': 'Femenino',
+  'gender.other': 'Otro',
   'landing.page.connection': 'Conectando al servidor...',
   'landing.page.version':
       'Hay una nueva actualización disponible, actualice la aplicación en su tienda.',
@@ -94,6 +107,8 @@ final Map<String, String> esES = {
   'register.page.email': 'Correo electrónico',
   'register.page.password': 'Contraseña',
   'register.page.password.confirmation': 'Confirmar la contraseña',
+  'register.page.gender': 'Género',
+  'register.page.birth.date': 'Fecha de nacimiento',
   'register.page.button': 'Registro',
   'register.page.service.terms.text': 'Al crear una cuenta, acepta leer todo ',
   'register.page.service.terms.action': 'Términos del servicio',

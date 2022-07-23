@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
-import 'package:piece_fruits/src/models/api_error_model.dart';
 import 'package:piece_fruits/src/models/login_model.dart';
+import 'package:piece_fruits/src/models/response_model.dart';
 import 'package:piece_fruits/src/services/encrypt_service.dart';
 import 'package:piece_fruits/src/services/landing_service.dart';
 import 'package:piece_fruits/src/services/login_service.dart';
@@ -31,9 +31,9 @@ class LandingController extends GetxController {
     await landingService.getVersion().then(
       _validateConnection,
       onError: (dynamic error) {
-        final ApiErrorModel apiErrorModel = apiErrorModelFromJson(error);
+        final ResponseModel responseModel = responseModelFromJson(error);
         isLoading.value = false;
-        text.value = apiErrorModel.message!;
+        text.value = responseModel.message!;
         isFailure.value = true;
       },
     );
