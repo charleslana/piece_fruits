@@ -20,6 +20,7 @@ Future<void> main() async {
     statusBarColor: Colors.black,
   ));
   await initializeDateFormatting();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

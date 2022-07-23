@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:piece_fruits/src/services/pubspec_service.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class AppVersion extends StatelessWidget {
   const AppVersion({Key? key}) : super(key: key);
@@ -18,11 +18,18 @@ class AppVersion extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          FutureBuilder<String>(
-            future: PubspecService().getVersion(),
-            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+          FutureBuilder<PackageInfo>(
+            future: _getPackageInfo(),
+            builder:
+                (BuildContext context, AsyncSnapshot<PackageInfo> snapshot) {
+              if (snapshot.hasError) {
+                return const Text('Error');
+              }
+              if (!snapshot.hasData) {
+                return const Text('Loading...');
+              }
               return Text(
-                'V. ${snapshot.data}',
+                'V. ${snapshot.data!.version}',
                 style: const TextStyle(
                   fontSize: 13,
                   color: Colors.white,
@@ -33,5 +40,9 @@ class AppVersion extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<PackageInfo> _getPackageInfo() {
+    return PackageInfo.fromPlatform();
   }
 }

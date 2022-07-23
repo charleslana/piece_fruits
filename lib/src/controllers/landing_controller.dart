@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/models/api_error_model.dart';
 import 'package:piece_fruits/src/models/login_model.dart';
 import 'package:piece_fruits/src/services/encrypt_service.dart';
 import 'package:piece_fruits/src/services/landing_service.dart';
 import 'package:piece_fruits/src/services/login_service.dart';
-import 'package:piece_fruits/src/services/pubspec_service.dart';
 import 'package:piece_fruits/src/utils/functions.dart';
 
 class LandingController extends GetxController {
@@ -16,7 +16,6 @@ class LandingController extends GetxController {
 
   LandingService landingService = LandingService();
   LoginService loginService = LoginService();
-  final PubspecService _pubspecService = PubspecService();
   final EncryptService _encryptService = EncryptService();
   RxString text = 'landing.page.connection'.tr.obs;
   RxBool isLoading = true.obs;
@@ -41,8 +40,8 @@ class LandingController extends GetxController {
   }
 
   Future<void> _validateConnection(String result) async {
-    final String version = await _pubspecService.getVersion();
-    if (result != version) {
+    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    if (result != packageInfo.version) {
       isLoading.value = false;
       text.value = 'landing.page.version'.tr;
       return;
