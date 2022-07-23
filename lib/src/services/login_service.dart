@@ -24,6 +24,15 @@ class LoginService extends GetConnect {
 
   Map<String, dynamic>? getLogin() => _getStorageService.read(_key);
 
+  String getToken() {
+    final dynamic loginBox = _getStorageService.read(_key);
+    if (loginBox is LoginModel) {
+      return loginBox.accessToken ?? '';
+    }
+    final LoginModel login = LoginModel.decoderFromJson(loginBox);
+    return login.accessToken ?? '';
+  }
+
   Future<LoginModel> login(String email, String password) async {
     final formData = FormData({
       'email': email,
