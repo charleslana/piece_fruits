@@ -5,6 +5,7 @@ import 'package:piece_fruits/src/enums/toast_enum.dart';
 import 'package:piece_fruits/src/interfaces/custom_app_bar_abstract.dart';
 import 'package:piece_fruits/src/interfaces/form_validator.dart';
 import 'package:piece_fruits/src/models/api_error_model.dart';
+import 'package:piece_fruits/src/services/encrypt_service.dart';
 import 'package:piece_fruits/src/services/login_service.dart';
 import 'package:piece_fruits/src/utils/functions.dart';
 
@@ -15,11 +16,12 @@ class LoginController extends GetxController
     required this.loginService,
   });
 
+  LoginService loginService = LoginService();
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final ScrollController scrollController = ScrollController();
-  LoginService loginService = LoginService();
+  final EncryptService _encryptService = EncryptService();
   RxDouble offset = RxDouble(0);
 
   @override
@@ -60,7 +62,7 @@ class LoginController extends GetxController
   Future<void> validateLogin(String email, String password) async {
     await loginService.login(email, password).then(
       (result) {
-        result = result.copyWith(password: password);
+        result = result.copyWith(password: _encryptService.encrypt(password));
         loginService.saveLogin(result);
         navigateOff(charactersRoute);
         hideLoading();

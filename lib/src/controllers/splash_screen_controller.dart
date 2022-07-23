@@ -9,7 +9,7 @@ class SplashScreenController extends GetxController {
   void onInit() {
     Timer(
       const Duration(seconds: 2),
-      () => navigateOff(loginRoute),
+      () => navigateOff(landingRoute),
     );
     super.onInit();
   }

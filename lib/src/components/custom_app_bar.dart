@@ -8,7 +8,7 @@ import 'package:piece_fruits/src/utils/functions.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     Key? key,
-    required this.title,
+    this.title = '',
     this.isGoBack = false,
     this.offset = 0,
   }) : super(key: key);
@@ -32,7 +32,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icon(Icons.arrow_back_ios_new),
             )
           : null,
-      title: Text(title),
+      title: Text(
+        title,
+        style: const TextStyle(
+          shadows: [
+            Shadow(
+              blurRadius: 10,
+              color: Colors.white,
+              offset: Offset(
+                5,
+                5,
+              ),
+            ),
+          ],
+        ),
+      ),
       centerTitle: true,
       backgroundColor: offset > 40 ? Colors.black87 : Colors.transparent,
       elevation: 0,

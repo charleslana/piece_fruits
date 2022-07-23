@@ -22,7 +22,7 @@ class LoginService extends GetConnect {
     super.onInit();
   }
 
-  Map<String, dynamic> getLogin() => _getStorageService.read(_key);
+  Map<String, dynamic>? getLogin() => _getStorageService.read(_key);
 
   Future<LoginModel> login(String email, String password) async {
     final formData = FormData({

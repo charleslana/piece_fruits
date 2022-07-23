@@ -28,6 +28,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/layout/
+    - assets/images/icons/
+    - assets/images/avatars/portrait/1/
+    - assets/images/avatars/thumbnail/1/
 
   fonts:
     - family: Dosis

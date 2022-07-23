@@ -13,6 +13,10 @@ void _closeToast() {
   }
 }
 
+void closeKeyboard() {
+  FocusManager.instance.primaryFocus?.unfocus();
+}
+
 void goBack() {
   Get.back<dynamic>();
 }
