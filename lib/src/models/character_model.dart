@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_lambdas
+
 import 'dart:convert';
 
 List<CharacterModel> characterModelFromJson(String str) =>
@@ -17,9 +19,6 @@ class CharacterModel {
     this.character,
   });
 
-  factory CharacterModel.decoderFromJson(dynamic json) =>
-      CharacterModel.fromJson(json);
-
   factory CharacterModel.fromJson(Map<String, dynamic> json) => CharacterModel(
         id: json['id'],
         name: json['name'],
@@ -33,6 +32,10 @@ class CharacterModel {
             ? null
             : Character.fromJson(json['character']),
       );
+
+  static List<CharacterModel> listFromJson(dynamic list) =>
+      List<CharacterModel>.from(
+          list.map((dynamic x) => CharacterModel.fromJson(x)));
 
   final int? id;
   final String? name;
@@ -95,7 +98,8 @@ class Character {
         name: json['name'],
         avatars: json['avatars'] == null
             ? null
-            : List<Avatar>.from(json['avatars'].map(Avatar.fromJson)),
+            : List<Avatar>.from(
+                json['avatars'].map((dynamic x) => Avatar.fromJson(x))),
       );
 
   final String? name;

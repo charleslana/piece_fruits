@@ -11,6 +11,7 @@ class LoginModel {
     this.accessToken,
     this.email,
     this.password,
+    this.cookie,
   });
 
   factory LoginModel.decoderFromJson(dynamic json) => LoginModel.fromJson(json);
@@ -20,18 +21,21 @@ class LoginModel {
         accessToken: json['accessToken'],
         email: json['email'],
         password: json['password'],
+        cookie: json['cookie'],
       );
 
   final String? role;
   final String? accessToken;
   final String? email;
   final String? password;
+  final String? cookie;
 
   Map<String, dynamic> toJson() => {
         'role': role,
         'accessToken': accessToken,
         'email': email,
         'password': password,
+        'cookie': cookie,
       };
 
   LoginModel copyWith({
@@ -39,12 +43,14 @@ class LoginModel {
     String? accessToken,
     String? email,
     String? password,
+    String? cookie,
   }) {
     return LoginModel(
       role: role ?? this.role,
       accessToken: accessToken ?? this.accessToken,
       email: email ?? this.email,
       password: password ?? this.password,
+      cookie: cookie ?? this.cookie,
     );
   }
 }

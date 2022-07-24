@@ -6,30 +6,28 @@ import 'package:piece_fruits/src/components/gradient_button.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
 import 'package:piece_fruits/src/controllers/character_controller.dart';
+import 'package:piece_fruits/src/models/character_model.dart';
+import 'package:piece_fruits/src/models/response_model.dart';
 import 'package:piece_fruits/src/utils/functions.dart';
+import 'package:piece_fruits/src/utils/widgets.dart';
 
 class CharacterPage extends GetView<CharacterController> {
   const CharacterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<String> list = [
-      'Personagem A',
-      'Personagem B',
-      'Personagem C',
-      'Personagem D',
-    ];
+    const int quantityCharactersMax = 4;
 
     return SafeArea(
-      child: Obx(() {
-        return LoadingOverlay(
-          child: Scaffold(
-            extendBodyBehindAppBar: true,
-            appBar: CustomAppBar(
-              title: 'characters.page.title'.tr,
-              offset: controller.offset.value,
-            ),
-            body: SingleChildScrollView(
+      child: LoadingOverlay(
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: CustomAppBar(
+            title: 'characters.page.title'.tr,
+            offset: controller.offset.value,
+          ),
+          body: controller.obx(
+            (state) => SingleChildScrollView(
               controller: controller.scrollController,
               physics: const BouncingScrollPhysics(),
               child: Center(
@@ -42,7 +40,7 @@ class CharacterPage extends GetView<CharacterController> {
                         clipBehavior: Clip.none,
                         physics: const BouncingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: list.length,
+                        itemCount: quantityCharactersMax,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
@@ -51,7 +49,8 @@ class CharacterPage extends GetView<CharacterController> {
                           childAspectRatio: 0.65,
                         ),
                         itemBuilder: (BuildContext context, int index) {
-                          if (index == 0) {
+                          if (state!.length > index) {
+                            final CharacterModel character = state[index];
                             return Card(
                               child: Padding(
                                 padding: const EdgeInsets.all(5),
@@ -110,9 +109,9 @@ class CharacterPage extends GetView<CharacterController> {
                                                 color: Colors.black
                                                     .withOpacity(0.5),
                                               ),
-                                              child: const Text(
-                                                '1',
-                                                style: TextStyle(
+                                              child: Text(
+                                                character.level.toString(),
+                                                style: const TextStyle(
                                                   fontSize: 17,
                                                   color: Colors.white,
                                                 ),
@@ -127,7 +126,7 @@ class CharacterPage extends GetView<CharacterController> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.end,
                                         children: [
-                                          const Text('teste'),
+                                          Text(character.name!),
                                           const SizedBox(height: 5),
                                           SizedBox(
                                             width: double.infinity,
@@ -188,9 +187,17 @@ class CharacterPage extends GetView<CharacterController> {
                 ),
               ),
             ),
+            onEmpty: getError(),
+            onError: (dynamic error) {
+              final ResponseModel responseModel = responseModelFromJson(error);
+              return getError(message: responseModel.message);
+            },
+            onLoading: const Center(
+              child: CircularProgressIndicator(),
+            ),
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 }

@@ -23,6 +23,7 @@ final Map<String, String> enUS = {
   'landing.page.start': 'Preparing to start...',
   'landing.page.try.connect.button': 'Try again',
   'connection.failure': 'Failed to connect to server',
+  'connection.login.button': 'Login',
   'validation.field.empty': 'Please this field must be filled',
   'validation.field.email': 'Please, type a valid email',
   'validation.field.password.confirmation': 'Passwords must be the same',
@@ -57,6 +58,7 @@ final Map<String, String> ptBR = {
   'landing.page.start': 'Preparando para iniciar...',
   'landing.page.try.connect.button': 'Tentar novamente',
   'connection.failure': 'Falha ao conectar no servidor',
+  'connection.login.button': 'Realizar login',
   'validation.field.empty': 'Por favor, este campo deve ser preenchido',
   'validation.field.email': 'Por favor, digite um e-mail válido',
   'validation.field.password.confirmation': 'As senhas devem ser iguais',
@@ -91,6 +93,7 @@ final Map<String, String> esES = {
   'landing.page.start': 'Preparándonos para empezar...',
   'landing.page.try.connect.button': 'Intentar nuevamente',
   'connection.failure': 'Error al conectar con el servidor',
+  'connection.login.button': 'Iniciar sesión',
   'validation.field.empty': 'Por favor este campo debe ser llenado',
   'validation.field.email': 'Por favor, escriba un correo electrónico válido',
   'validation.field.password.confirmation':

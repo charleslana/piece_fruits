@@ -22,6 +22,24 @@ class LoginService extends GetConnect {
     super.onInit();
   }
 
+  String _getCookieFromHeader(Response<dynamic> response) {
+    final String? rawCookie = response.headers!['set-cookie'];
+    if (rawCookie != null) {
+      final int index = rawCookie.indexOf(';');
+      return (index == -1) ? rawCookie : rawCookie.substring(0, index);
+    }
+    return '';
+  }
+
+  String getCookie() {
+    final dynamic loginBox = _getStorageService.read(_key);
+    if (loginBox is LoginModel) {
+      return loginBox.cookie ?? '';
+    }
+    final LoginModel login = LoginModel.decoderFromJson(loginBox);
+    return login.cookie ?? '';
+  }
+
   Map<String, dynamic>? getLogin() => _getStorageService.read(_key);
 
   String getToken() {
@@ -45,7 +63,7 @@ class LoginService extends GetConnect {
       }
       return Future.error(response.bodyString.toString());
     }
-    return response.body;
+    return response.body.copyWith(cookie: _getCookieFromHeader(response));
   }
 
   void removeLogin() => _getStorageService.remove(_key);

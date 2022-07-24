@@ -13,10 +13,10 @@ class CharacterService extends GetConnect {
   void onInit() {
     httpClient
       ..baseUrl = baseUrl
-      ..defaultDecoder = CharacterModel.decoderFromJson
       ..addRequestModifier<dynamic>((dynamic request) {
         request.headers['accept-language'] = _languageService.getStringLocale();
         request.headers['Authorization'] = 'Bearer ${_loginService.getToken()}';
+        request.headers['cookie'] = _loginService.getCookie();
         return request;
       });
     super.onInit();
@@ -30,6 +30,6 @@ class CharacterService extends GetConnect {
       }
       return Future.error(response.bodyString.toString());
     }
-    return response.body;
+    return CharacterModel.listFromJson(response.body);
   }
 }

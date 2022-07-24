@@ -44,7 +44,6 @@ class CharacterController extends GetxController
 
   Future<void> _fetchAllCharacters() async {
     await characterService.getAllCharacters().then((result) {
-      print(result);
       change(result, status: RxStatus.success());
     }, onError: (dynamic err) {
       change(null, status: RxStatus.error(err.toString()));
