@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:piece_fruits/src/interfaces/custom_app_bar_abstract.dart';
-import 'package:piece_fruits/src/models/character_model.dart';
-import 'package:piece_fruits/src/services/character_service.dart';
+import 'package:piece_fruits/src/models/account_character_model.dart';
+import 'package:piece_fruits/src/services/account_character_service.dart';
 
-class CharacterController extends GetxController
-    with StateMixin<List<CharacterModel>>
+class AccountCharacterController extends GetxController
+    with StateMixin<List<AccountCharacterModel>>
     implements CustomAppBarAbstract {
-  CharacterController({
-    required this.characterService,
+  AccountCharacterController({
+    required this.accountCharacterService,
   });
 
-  CharacterService characterService = CharacterService();
+  AccountCharacterService accountCharacterService = AccountCharacterService();
   final ScrollController scrollController = ScrollController();
   RxDouble offset = 0.0.obs;
 
@@ -43,7 +43,7 @@ class CharacterController extends GetxController
   }
 
   Future<void> _fetchAllCharacters() async {
-    await characterService.getAllCharacters().then((result) {
+    await accountCharacterService.getAllCharacters().then((result) {
       change(result, status: RxStatus.success());
     }, onError: (dynamic err) {
       change(null, status: RxStatus.error(err.toString()));

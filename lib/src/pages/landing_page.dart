@@ -21,54 +21,51 @@ class LandingPage extends StatelessWidget {
         body: Stack(
           children: [
             const StarterBg(),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 56),
-                    const AppLogo(),
-                    const SizedBox(height: 20),
-                    Obx(() {
-                      return Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Visibility(
-                                visible: controller.isLoading.value,
-                                child: Column(
-                                  children: const [
-                                    LinearProgressIndicator(),
-                                    SizedBox(height: 5),
-                                  ],
-                                ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  const SizedBox(height: 56),
+                  const AppLogo(),
+                  const SizedBox(height: 20),
+                  Obx(() {
+                    return Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Visibility(
+                              visible: controller.isLoading.value,
+                              child: Column(
+                                children: const [
+                                  LinearProgressIndicator(),
+                                  SizedBox(height: 5),
+                                ],
                               ),
-                              Text(
-                                controller.text.value,
-                                style: const TextStyle(fontFamily: 'Lato'),
-                                textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              controller.text.value,
+                              style: const TextStyle(fontFamily: 'Lato'),
+                              textAlign: TextAlign.center,
+                            ),
+                            Visibility(
+                              visible: controller.isFailure.value,
+                              child: Column(
+                                children: [
+                                  const SizedBox(height: 5),
+                                  GradientButton(
+                                    title: 'landing.page.try.connect.button'.tr,
+                                    callback: controller.tryConnect,
+                                  ),
+                                ],
                               ),
-                              Visibility(
-                                visible: controller.isFailure.value,
-                                child: Column(
-                                  children: [
-                                    const SizedBox(height: 5),
-                                    GradientButton(
-                                      title:
-                                          'landing.page.try.connect.button'.tr,
-                                      callback: controller.tryConnect,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      );
-                    }),
-                  ],
-                ),
+                      ),
+                    );
+                  }),
+                ],
               ),
             ),
             const AppVersion(),

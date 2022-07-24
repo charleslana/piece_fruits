@@ -45,7 +45,10 @@ final Map<String, String> enUS = {
   'register.page.service.terms.text':
       'By creating an account you agree to read all ',
   'register.page.service.terms.action': 'Service terms',
-  'characters.page.title': 'Characters',
+  'account.characters.page.title': 'Characters',
+  'account.characters.page.play.button': 'Play',
+  'account.characters.page.create.button': 'Create',
+  'account.characters.page.logout.button': 'Logout',
 };
 
 final Map<String, String> ptBR = {
@@ -80,7 +83,10 @@ final Map<String, String> ptBR = {
   'register.page.service.terms.text':
       'Ao criar uma conta você aceita ler todos os ',
   'register.page.service.terms.action': 'Termos de serviço',
-  'characters.page.title': 'Personagens',
+  'account.characters.page.title': 'Personagens',
+  'account.characters.page.play.button': 'Jogar',
+  'account.characters.page.create.button': 'Criar',
+  'account.characters.page.logout.button': 'Sair',
 };
 
 final Map<String, String> esES = {
@@ -115,5 +121,8 @@ final Map<String, String> esES = {
   'register.page.button': 'Registro',
   'register.page.service.terms.text': 'Al crear una cuenta, acepta leer todo ',
   'register.page.service.terms.action': 'Términos del servicio',
-  'characters.page.title': 'Personajes',
+  'account.characters.page.title': 'Personajes',
+  'account.characters.page.play.button': 'Jugar',
+  'account.characters.page.create.button': 'Crear',
+  'account.characters.page.logout.button': 'Salir',
 };

@@ -76,12 +76,10 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          Center(
-                            child: Text(
-                              'login.page.have.registration'.tr,
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
+                          Text(
+                            'login.page.have.registration'.tr,
+                            style: const TextStyle(
+                              color: Colors.white,
                             ),
                           ),
                           const SizedBox(height: 20),

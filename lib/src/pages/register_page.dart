@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:piece_fruits/src/components/app_version.dart';
 import 'package:piece_fruits/src/components/card_form.dart';
 import 'package:piece_fruits/src/components/custom_app_bar.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
@@ -154,31 +153,34 @@ class RegisterPage extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          RichText(
-                            text: TextSpan(
-                              text: 'register.page.service.terms.text'.tr,
-                              children: [
-                                TextSpan(
-                                  text: 'register.page.service.terms.action'.tr,
-                                  style: const TextStyle(
-                                    decoration: TextDecoration.underline,
+                          InkWell(
+                            onTap: () => {},
+                            child: RichText(
+                              text: TextSpan(
+                                text: 'register.page.service.terms.text'.tr,
+                                children: [
+                                  TextSpan(
+                                    text:
+                                        'register.page.service.terms.action'.tr,
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.underline,
+                                    ),
                                   ),
+                                ],
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: 'Dosis',
                                 ),
-                              ],
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                                fontFamily: 'Dosis',
                               ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                const AppVersion(),
               ],
             ),
           ),

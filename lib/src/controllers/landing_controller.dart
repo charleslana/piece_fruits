@@ -70,7 +70,7 @@ class LandingController extends GetxController {
       (result) {
         result = result.copyWith(password: _encryptService.encrypt(password));
         loginService.saveLogin(result);
-        navigateOff(charactersRoute);
+        navigateOff(accountCharacterRoute);
       },
       onError: (dynamic error) {
         navigateOff(loginRoute);

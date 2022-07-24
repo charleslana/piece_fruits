@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:piece_fruits/src/bindings/character_binding.dart';
+import 'package:piece_fruits/src/bindings/account_character_binding.dart';
 import 'package:piece_fruits/src/bindings/landing_binding.dart';
 import 'package:piece_fruits/src/bindings/language_binding.dart';
 import 'package:piece_fruits/src/bindings/loading_overlay_binding.dart';
@@ -8,23 +8,31 @@ import 'package:piece_fruits/src/bindings/login_binding.dart';
 import 'package:piece_fruits/src/bindings/register_binding.dart';
 import 'package:piece_fruits/src/bindings/splash_screen_binding.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
-import 'package:piece_fruits/src/pages/character_page.dart';
+import 'package:piece_fruits/src/pages/account_character_page.dart';
+import 'package:piece_fruits/src/pages/create_account_character_page.dart';
 import 'package:piece_fruits/src/pages/landing_page.dart';
 import 'package:piece_fruits/src/pages/login_page.dart';
 import 'package:piece_fruits/src/pages/register_page.dart';
 import 'package:piece_fruits/src/pages/splash_screen_page.dart';
 
 class RouteService {
-  GetPageRoute<dynamic> _getCharacterPage(RouteSettings settings) {
+  GetPageRoute<dynamic> _getAccountCharacterPage(RouteSettings settings) {
     return GetPageRoute(
-      page: () => const CharacterPage(),
+      page: () => const AccountCharacterPage(),
       settings: settings,
       transition: Transition.leftToRight,
       bindings: [
         LanguageBinding(),
         LoadingOverlayBinding(),
-        CharacterBinding(),
+        AccountCharacterBinding(),
       ],
+    );
+  }
+
+  GetPageRoute<dynamic> _getCreateAccountCharacterPage(RouteSettings settings) {
+    return GetPageRoute(
+      page: () => const CreateAccountCharacterPage(),
+      settings: settings,
     );
   }
 
@@ -96,8 +104,10 @@ class RouteService {
         return _getLoginPage(settings);
       case registerRoute:
         return _getRegisterPage(settings);
-      case charactersRoute:
-        return _getCharacterPage(settings);
+      case accountCharacterRoute:
+        return _getAccountCharacterPage(settings);
+      case createAccountCharacterRoute:
+        return _getCreateAccountCharacterPage(settings);
       default:
         return _getDefaultPage(settings);
     }

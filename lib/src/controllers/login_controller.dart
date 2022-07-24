@@ -63,7 +63,7 @@ class LoginController extends GetxController
       (result) {
         result = result.copyWith(password: _encryptService.encrypt(password));
         loginService.saveLogin(result);
-        navigateOff(charactersRoute);
+        navigateOff(accountCharacterRoute);
         hideLoading();
       },
       onError: (dynamic error) {

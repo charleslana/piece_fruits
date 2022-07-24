@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:piece_fruits/src/constants/config_constant.dart';
-import 'package:piece_fruits/src/models/character_model.dart';
+import 'package:piece_fruits/src/models/account_character_model.dart';
 import 'package:piece_fruits/src/services/language_service.dart';
 import 'package:piece_fruits/src/services/login_service.dart';
 import 'package:piece_fruits/src/utils/functions.dart';
 
-class CharacterService extends GetConnect {
+class AccountCharacterService extends GetConnect {
   final LanguageService _languageService = LanguageService();
   final LoginService _loginService = LoginService();
 
@@ -22,7 +22,7 @@ class CharacterService extends GetConnect {
     super.onInit();
   }
 
-  Future<List<CharacterModel>> getAllCharacters() async {
+  Future<List<AccountCharacterModel>> getAllCharacters() async {
     final response = await get<dynamic>('/account/character/all');
     if (response.status.hasError) {
       if (response.bodyString == null) {
@@ -30,6 +30,6 @@ class CharacterService extends GetConnect {
       }
       return Future.error(response.bodyString.toString());
     }
-    return CharacterModel.listFromJson(response.body);
+    return AccountCharacterModel.listFromJson(response.body);
   }
 }
