@@ -65,10 +65,11 @@ class LandingController extends GetxController {
   }
 
   Future<void> _validateLogin(LoginModel login) async {
-    await loginService
-        .login(login.email!, _encryptService.decrypt(login.password!))
-        .then(
+    final String password = _encryptService.decrypt(login.password!);
+    await loginService.login(login.email!, password).then(
       (result) {
+        result = result.copyWith(password: _encryptService.encrypt(password));
+        loginService.saveLogin(result);
         navigateOff(charactersRoute);
       },
       onError: (dynamic error) {
