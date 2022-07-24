@@ -90,11 +90,13 @@ class Attribute {
 
 class Character {
   Character({
+    this.id,
     this.name,
     this.avatars,
   });
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
+        id: json['id'],
         name: json['name'],
         avatars: json['avatars'] == null
             ? null
@@ -102,10 +104,12 @@ class Character {
                 json['avatars'].map((dynamic x) => Avatar.fromJson(x))),
       );
 
+  final int? id;
   final String? name;
   final List<Avatar>? avatars;
 
   Map<String, dynamic> toJson() => {
+        'id': id,
         'name': name,
         'avatars': avatars == null
             ? null

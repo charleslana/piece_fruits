@@ -78,7 +78,10 @@ class CharacterPage extends GetView<CharacterController> {
                                       },
                                       blendMode: BlendMode.dstIn,
                                       child: Image.asset(
-                                        getThumbnailAvatar(1, '1'),
+                                        getThumbnailAvatar(
+                                          character.character!.id!,
+                                          character.image!,
+                                        ),
                                         fit: BoxFit.cover,
                                       ),
                                     ),
