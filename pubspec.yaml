@@ -35,6 +35,24 @@ flutter:
     - assets/images/icons/
     - assets/images/avatars/portrait/1/
     - assets/images/avatars/thumbnail/1/
+    - assets/images/avatars/portrait/2/
+    - assets/images/avatars/thumbnail/2/
+    - assets/images/avatars/portrait/3/
+    - assets/images/avatars/thumbnail/3/
+    - assets/images/avatars/portrait/4/
+    - assets/images/avatars/thumbnail/4/
+    - assets/images/avatars/portrait/5/
+    - assets/images/avatars/thumbnail/5/
+    - assets/images/avatars/portrait/6/
+    - assets/images/avatars/thumbnail/6/
+    - assets/images/avatars/portrait/7/
+    - assets/images/avatars/thumbnail/7/
+    - assets/images/avatars/portrait/8/
+    - assets/images/avatars/thumbnail/8/   
+    - assets/images/avatars/portrait/9/
+    - assets/images/avatars/thumbnail/9/
+    - assets/images/avatars/portrait/10/
+    - assets/images/avatars/thumbnail/10/             
 
   fonts:
     - family: Dosis

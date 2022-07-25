@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:piece_fruits/src/bindings/account_character_binding.dart';
+import 'package:piece_fruits/src/bindings/character_binding.dart';
 import 'package:piece_fruits/src/bindings/landing_binding.dart';
 import 'package:piece_fruits/src/bindings/language_binding.dart';
 import 'package:piece_fruits/src/bindings/loading_overlay_binding.dart';
@@ -33,6 +34,12 @@ class RouteService {
     return GetPageRoute(
       page: () => const CreateAccountCharacterPage(),
       settings: settings,
+      transition: Transition.rightToLeft,
+      bindings: [
+        LanguageBinding(),
+        LoadingOverlayBinding(),
+        CharacterBinding(),
+      ],
     );
   }
 

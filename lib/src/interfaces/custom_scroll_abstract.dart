@@ -1,4 +1,4 @@
-abstract class CustomAppBarAbstract {
+abstract class CustomScrollAbstract {
   void goToTop();
 
   void listenScrollController();

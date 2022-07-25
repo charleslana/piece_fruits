@@ -38,7 +38,6 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                     const SizedBox(height: 20),
                     GridView.builder(
                       clipBehavior: Clip.none,
-                      physics: const BouncingScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: quantityCharactersMax,
                       gridDelegate:

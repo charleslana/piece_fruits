@@ -34,8 +34,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       title: Text(
         title,
-        style: const TextStyle(
-          shadows: [
+        style: TextStyle(
+          shadows: const [
             Shadow(
               blurRadius: 10,
               color: Colors.white,
@@ -45,6 +45,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ],
+          color: offset > 40 ? Colors.white : Colors.black,
         ),
       ),
       centerTitle: true,
@@ -58,10 +59,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 .map(
                   (item) => DropdownMenuItem<LanguageModel>(
                     value: item,
-                    child: Text(
-                      item.language,
-                      style: const TextStyle(
-                        color: Colors.white,
+                    child: SizedBox(
+                      height: 30,
+                      child: Image.asset(
+                        languageController.languageIcon(item.language),
+                        fit: BoxFit.contain,
                       ),
                     ),
                   ),

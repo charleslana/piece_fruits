@@ -31,24 +31,16 @@ class LoginService extends GetConnect {
     return '';
   }
 
+  LoginModel _getLoginModel() => getLogin();
+
   String getCookie() {
-    final dynamic loginBox = _getStorageService.read(_key);
-    if (loginBox is LoginModel) {
-      return loginBox.cookie ?? '';
-    }
-    final LoginModel login = LoginModel.decoderFromJson(loginBox);
-    return login.cookie ?? '';
+    return _getLoginModel().cookie ?? '';
   }
 
-  Map<String, dynamic>? getLogin() => _getStorageService.read(_key);
+  dynamic getLogin() => _getStorageService.read(_key);
 
   String getToken() {
-    final dynamic loginBox = _getStorageService.read(_key);
-    if (loginBox is LoginModel) {
-      return loginBox.accessToken ?? '';
-    }
-    final LoginModel login = LoginModel.decoderFromJson(loginBox);
-    return login.accessToken ?? '';
+    return _getLoginModel().accessToken ?? '';
   }
 
   Future<LoginModel> login(String email, String password) async {

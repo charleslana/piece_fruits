@@ -17,8 +17,12 @@ final ThemeData theme = ThemeData(
     headlineLarge: TextStyle(color: Colors.black),
   ),
   scaffoldBackgroundColor: const Color(0xffd0b562),
-  colorScheme:
-      const ColorScheme.dark().copyWith(primary: const Color(0xffd0b562)),
+  colorScheme: const ColorScheme.dark().copyWith(
+    primary: const Color(0xffd0b562),
+    secondary: const Color(0xffd0b562),
+    onSurface: Colors.black,
+    background: Colors.black,
+  ),
   inputDecorationTheme: const InputDecorationTheme(
     labelStyle: TextStyle(
       color: Colors.black,
@@ -35,6 +39,9 @@ final ThemeData theme = ThemeData(
   ),
   radioTheme: RadioThemeData(
     fillColor: MaterialStateColor.resolveWith((states) => Colors.black54),
+  ),
+  buttonTheme: const ButtonThemeData(
+    buttonColor: Colors.black,
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xffd0b562),

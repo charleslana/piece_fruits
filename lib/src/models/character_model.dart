@@ -18,6 +18,10 @@ class CharacterModel {
                 json['avatars'].map((dynamic x) => AvatarModel.fromJson(x))),
       );
 
+  static List<CharacterModel> listFromJson(dynamic list) =>
+      List<CharacterModel>.from(
+          list.map((dynamic x) => CharacterModel.fromJson(x)));
+
   final int? id;
   final String? name;
   final List<AvatarModel>? avatars;

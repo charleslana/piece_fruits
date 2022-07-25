@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:piece_fruits/src/constants/data_constant.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/enums/toast_enum.dart';
-import 'package:piece_fruits/src/interfaces/custom_app_bar_abstract.dart';
+import 'package:piece_fruits/src/interfaces/custom_scroll_abstract.dart';
 import 'package:piece_fruits/src/interfaces/form_validator.dart';
 import 'package:piece_fruits/src/models/register_model.dart';
 import 'package:piece_fruits/src/models/response_model.dart';
@@ -13,7 +13,7 @@ import 'package:piece_fruits/src/utils/functions.dart';
 
 class RegisterController extends GetxController
     with FormValidator
-    implements CustomAppBarAbstract {
+    implements CustomScrollAbstract {
   RegisterController({
     required this.registerService,
   });
