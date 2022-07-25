@@ -37,7 +37,7 @@ class CreateAccountCharacterPage
                       padding: const EdgeInsets.all(10),
                       child: Obx(() {
                         return Stepper(
-                          physics: const BouncingScrollPhysics(),
+                          physics: const ScrollPhysics(),
                           controlsBuilder: controlsBuilder,
                           currentStep: controller.currentStep.value,
                           onStepTapped: _onStepTapped,
@@ -106,6 +106,7 @@ class CreateAccountCharacterPage
     return Step(
       title: const Text('Personagem'),
       content: GridView.builder(
+          physics: const ScrollPhysics(),
           shrinkWrap: true,
           itemCount: state!.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

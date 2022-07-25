@@ -27,9 +27,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       leading: isGoBack
-          ? const IconButton(
+          ? IconButton(
               onPressed: goBack,
-              icon: Icon(Icons.arrow_back_ios_new),
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: offset > 40 ? Colors.white : Colors.black,
+              ),
             )
           : null,
       title: Text(
