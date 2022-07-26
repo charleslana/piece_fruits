@@ -23,6 +23,7 @@ final ThemeData theme = ThemeData(
     onSurface: Colors.black,
     background: Colors.black,
   ),
+  splashColor: Colors.black.withOpacity(0.3),
   inputDecorationTheme: const InputDecorationTheme(
     labelStyle: TextStyle(
       color: Colors.black,
@@ -42,6 +43,11 @@ final ThemeData theme = ThemeData(
   ),
   buttonTheme: const ButtonThemeData(
     buttonColor: Colors.black,
+  ),
+  canvasColor: const Color(0xffd0b562),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    backgroundColor: Color(0xffd0b562),
+    foregroundColor: Colors.black,
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xffd0b562),

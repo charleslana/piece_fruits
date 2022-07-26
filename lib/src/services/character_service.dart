@@ -23,7 +23,7 @@ class CharacterService extends GetConnect {
   }
 
   Future<List<CharacterModel>> getAllCharacters() async {
-    final response = await get<dynamic>('/character');
+    final response = await get<dynamic>('/character/initial');
     if (response.status.hasError) {
       if (response.bodyString == null) {
         return Future.error(showConnectionFailure());

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:piece_fruits/src/components/custom_app_bar.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
+import 'package:piece_fruits/src/constants/data_constant.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
 import 'package:piece_fruits/src/controllers/create_account_character_controller.dart';
 import 'package:piece_fruits/src/models/character_model.dart';
@@ -36,18 +37,27 @@ class CreateAccountCharacterPage
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Obx(() {
-                        return Stepper(
-                          physics: const ScrollPhysics(),
-                          controlsBuilder: controlsBuilder,
-                          currentStep: controller.currentStep.value,
-                          onStepTapped: _onStepTapped,
-                          onStepContinue: _onStepContinue,
-                          onStepCancel: _onStepCancel,
-                          steps: [
-                            _nameSTep(),
-                            _characterStep(state),
-                            _factionStep(),
-                          ],
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 170, 148, 80)
+                                .withOpacity(0.3),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                          ),
+                          child: Stepper(
+                            physics: const ScrollPhysics(),
+                            controlsBuilder: _controlsBuilder,
+                            currentStep: controller.currentStep.value,
+                            onStepTapped: _onStepTapped,
+                            onStepContinue: _onStepContinue,
+                            onStepCancel: _onStepCancel,
+                            steps: [
+                              _infoSTep(),
+                              _characterStep(state),
+                              _factionStep(),
+                            ],
+                          ),
                         );
                       }),
                     ),
@@ -64,23 +74,36 @@ class CreateAccountCharacterPage
                 ),
               ),
             ),
+            floatingActionButton: const FloatingActionButton(
+              onPressed: null,
+              tooltip: 'Info',
+              child: Icon(Icons.info),
+            ),
           );
         });
       }),
     );
   }
 
-  void _onStepTapped(int step) => controller.currentStep.value = step;
+  void _onStepTapped(int step) {
+    if (controller.createAccountCharacterFormKey.currentState!.validate()) {
+      controller.currentStep.value = step;
+      controller.goToTop();
+    }
+  }
 
   void _onStepContinue() {
-    if (controller.currentStep.value < 2) {
+    if (controller.createAccountCharacterFormKey.currentState!.validate() &&
+        controller.currentStep.value < 2) {
       controller.currentStep.value += 1;
+      controller.goToTop();
     }
   }
 
   void _onStepCancel() {
     if (controller.currentStep.value > 0) {
       controller.currentStep.value -= 1;
+      controller.goToTop();
     }
   }
 
@@ -91,11 +114,51 @@ class CreateAccountCharacterPage
     return StepState.editing;
   }
 
-  Step _nameSTep() {
+  Step _infoSTep() {
     return Step(
+      subtitle: const Text(
+        'Escolha seu nome e sua facção',
+        style: TextStyle(
+          color: Colors.black,
+        ),
+      ),
       title: const Text('Informações do personagem'),
-      content: TextFormField(
-        decoration: const InputDecoration(labelText: 'Nome do personagem'),
+      content: Form(
+        key: controller.createAccountCharacterFormKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextFormField(
+              decoration:
+                  const InputDecoration(labelText: 'Nome do personagem'),
+              validator: controller.validator,
+            ),
+            const SizedBox(height: 10),
+            const Text('Facção'),
+            DropdownButton<String>(
+              iconEnabledColor: Colors.black,
+              iconDisabledColor: Colors.black,
+              underline: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.black45,
+                    ),
+                  ),
+                ),
+              ),
+              isExpanded: true,
+              items: factions.map((String faction) {
+                return DropdownMenuItem<String>(
+                  value: faction,
+                  child: Text(controller.toFaction(faction)),
+                );
+              }).toList(),
+              onChanged: (String? value) => controller.faction.value = value,
+              value: controller.faction.value,
+            ),
+          ],
+        ),
       ),
       isActive: controller.currentStep.value >= 0,
       state: _stepState(0),
@@ -104,7 +167,7 @@ class CreateAccountCharacterPage
 
   Step _characterStep(List<CharacterModel>? state) {
     return Step(
-      title: const Text('Personagem'),
+      title: const Text('Selecione um Personagem'),
       content: GridView.builder(
           physics: const ScrollPhysics(),
           shrinkWrap: true,
@@ -117,38 +180,57 @@ class CreateAccountCharacterPage
           ),
           itemBuilder: (BuildContext context, int index) {
             final CharacterModel character = state[index];
-            return Card(
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: ShaderMask(
-                  shaderCallback: (rect) {
-                    return LinearGradient(
-                      begin: Alignment.center,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.black,
-                        Colors.black.withOpacity(0.8),
-                        Colors.transparent
-                      ],
-                    ).createShader(
-                      Rect.fromLTRB(
-                        0,
-                        0,
-                        rect.width,
-                        rect.height,
-                      ),
-                    );
-                  },
-                  blendMode: BlendMode.dstIn,
-                  child: Image.asset(
-                    getThumbnailAvatar(
-                      character.id!,
-                      character.avatars!.first.image!,
-                    ),
-                    fit: BoxFit.cover,
+            return InkWell(
+              onTap: () {
+                controller
+                  ..characterId.value = character.id
+                  ..characterName.value = character.name;
+              },
+              child: Obx(() {
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: controller.characterId.value! == character.id
+                        ? Border.all(
+                            width: 5,
+                          )
+                        : null,
                   ),
-                ),
-              ),
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: ShaderMask(
+                        shaderCallback: (rect) {
+                          return LinearGradient(
+                            begin: Alignment.center,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black,
+                              Colors.black.withOpacity(0.8),
+                              Colors.transparent
+                            ],
+                          ).createShader(
+                            Rect.fromLTRB(
+                              0,
+                              0,
+                              rect.width,
+                              rect.height,
+                            ),
+                          );
+                        },
+                        blendMode: BlendMode.dstIn,
+                        child: Image.asset(
+                          getThumbnailAvatar(
+                            character.id!,
+                            character.avatars!.first.image!,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }),
             );
           }),
       isActive: controller.currentStep >= 0,
@@ -158,12 +240,13 @@ class CreateAccountCharacterPage
 
   Step _factionStep() {
     return Step(
-      title: const Text('Facção'),
+      title: const Text('Finalizar'),
       content: Column(
         children: [
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Mobile Number'),
-          ),
+          _stepResult('Nome do personagem', controller.name.value),
+          _stepResult('Personagem', controller.characterName.value!),
+          _stepResult(
+              'Facção', controller.toFaction(controller.faction.value!)),
         ],
       ),
       isActive: controller.currentStep >= 0,
@@ -171,7 +254,7 @@ class CreateAccountCharacterPage
     );
   }
 
-  Widget controlsBuilder(
+  Widget _controlsBuilder(
       BuildContext context, ControlsDetails controlsDetails) {
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -191,6 +274,21 @@ class CreateAccountCharacterPage
             ),
         ],
       ),
+    );
+  }
+
+  Widget _stepResult(String key, String value) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(key),
+        Text(
+          value,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
     );
   }
 }

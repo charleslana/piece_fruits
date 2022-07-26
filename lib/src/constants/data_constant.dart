@@ -3,3 +3,9 @@ final List<String> genders = [
   'FEMALE',
   'OTHER',
 ];
+
+final List<String> factions = [
+  'PIRATE',
+  'MARINE',
+  'REVOLUTIONARY',
+];
