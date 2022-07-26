@@ -179,9 +179,12 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                       },
                     ),
                     const SizedBox(height: 20),
-                    InkWell(
-                      onTap: logout,
-                      child: Text('account.characters.page.logout.button'.tr),
+                    const IconButton(
+                      onPressed: logout,
+                      icon: Icon(
+                        Icons.logout,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),

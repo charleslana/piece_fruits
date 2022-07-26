@@ -48,7 +48,6 @@ final Map<String, String> enUS = {
   'account.characters.page.title': 'Characters',
   'account.characters.page.play.button': 'Play',
   'account.characters.page.create.button': 'Create',
-  'account.characters.page.logout.button': 'Logout',
 };
 
 final Map<String, String> ptBR = {
@@ -86,7 +85,6 @@ final Map<String, String> ptBR = {
   'account.characters.page.title': 'Personagens',
   'account.characters.page.play.button': 'Jogar',
   'account.characters.page.create.button': 'Criar',
-  'account.characters.page.logout.button': 'Sair',
 };
 
 final Map<String, String> esES = {
@@ -124,5 +122,4 @@ final Map<String, String> esES = {
   'account.characters.page.title': 'Personajes',
   'account.characters.page.play.button': 'Jugar',
   'account.characters.page.create.button': 'Crear',
-  'account.characters.page.logout.button': 'Salir',
 };

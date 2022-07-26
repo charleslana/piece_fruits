@@ -20,8 +20,6 @@ final ThemeData theme = ThemeData(
   colorScheme: const ColorScheme.dark().copyWith(
     primary: const Color(0xffd0b562),
     secondary: const Color(0xffd0b562),
-    onSurface: Colors.black,
-    background: Colors.black,
   ),
   splashColor: Colors.black.withOpacity(0.3),
   inputDecorationTheme: const InputDecorationTheme(
