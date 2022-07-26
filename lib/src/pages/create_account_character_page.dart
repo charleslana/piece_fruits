@@ -37,27 +37,18 @@ class CreateAccountCharacterPage
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Obx(() {
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 170, 148, 80)
-                                .withOpacity(0.3),
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(20),
-                            ),
-                          ),
-                          child: Stepper(
-                            physics: const ScrollPhysics(),
-                            controlsBuilder: _controlsBuilder,
-                            currentStep: controller.currentStep.value,
-                            onStepTapped: _onStepTapped,
-                            onStepContinue: _onStepContinue,
-                            onStepCancel: _onStepCancel,
-                            steps: [
-                              _infoSTep(),
-                              _characterStep(state),
-                              _factionStep(),
-                            ],
-                          ),
+                        return Stepper(
+                          physics: const ScrollPhysics(),
+                          controlsBuilder: _controlsBuilder,
+                          currentStep: controller.currentStep.value,
+                          onStepTapped: _onStepTapped,
+                          onStepContinue: _onStepContinue,
+                          onStepCancel: _onStepCancel,
+                          steps: [
+                            _infoSTep(),
+                            _characterStep(state),
+                            _factionStep(),
+                          ],
                         );
                       }),
                     ),
