@@ -10,10 +10,22 @@ final ThemeData theme = ThemeData(
     headline4: TextStyle(color: Colors.black),
     headline5: TextStyle(color: Colors.black),
     headline6: TextStyle(color: Colors.black),
-    subtitle1: TextStyle(color: Colors.black),
-    subtitle2: TextStyle(color: Colors.black),
-    bodyText1: TextStyle(color: Colors.black),
-    bodyText2: TextStyle(color: Colors.black),
+    subtitle1: TextStyle(
+      color: Colors.black,
+      fontSize: 16,
+    ),
+    subtitle2: TextStyle(
+      color: Colors.black,
+      fontSize: 16,
+    ),
+    bodyText1: TextStyle(
+      color: Colors.black,
+      fontSize: 16,
+    ),
+    bodyText2: TextStyle(
+      color: Colors.black,
+      fontSize: 16,
+    ),
     headlineLarge: TextStyle(color: Colors.black),
   ),
   scaffoldBackgroundColor: const Color(0xffd0b562),
