@@ -57,32 +57,35 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                               child: Stack(
                                 clipBehavior: Clip.none,
                                 children: [
-                                  ShaderMask(
-                                    shaderCallback: (rect) {
-                                      return LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Colors.black,
-                                          Colors.black.withOpacity(0.8),
-                                          Colors.transparent
-                                        ],
-                                      ).createShader(
-                                        Rect.fromLTRB(
-                                          0,
-                                          0,
-                                          rect.width,
-                                          rect.height,
+                                  Align(
+                                    alignment: Alignment.topCenter,
+                                    child: ShaderMask(
+                                      shaderCallback: (rect) {
+                                        return LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Colors.black,
+                                            Colors.black.withOpacity(0.8),
+                                            Colors.transparent
+                                          ],
+                                        ).createShader(
+                                          Rect.fromLTRB(
+                                            0,
+                                            0,
+                                            rect.width,
+                                            rect.height,
+                                          ),
+                                        );
+                                      },
+                                      blendMode: BlendMode.dstIn,
+                                      child: Image.asset(
+                                        getThumbnailAvatar(
+                                          accountCharacter.character!.id!,
+                                          accountCharacter.image!,
                                         ),
-                                      );
-                                    },
-                                    blendMode: BlendMode.dstIn,
-                                    child: Image.asset(
-                                      getThumbnailAvatar(
-                                        accountCharacter.character!.id!,
-                                        accountCharacter.image!,
+                                        fit: BoxFit.cover,
                                       ),
-                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                   IconButton(
