@@ -45,6 +45,7 @@ void navigateOffAll(String route) {
 }
 
 void showConfirmation(VoidCallback callback) {
+  _closeToast();
   Get.defaultDialog<dynamic>(
     onConfirm: () => {
       goBack(),
