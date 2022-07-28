@@ -24,7 +24,7 @@ class CreateAccountCharacterPage
           return Scaffold(
             extendBodyBehindAppBar: true,
             appBar: CustomAppBar(
-              title: 'Criar personagem',
+              title: 'create.account.character.page.title'.tr,
               offset: controller.offset.value,
               isGoBack: true,
             ),
@@ -65,10 +65,9 @@ class CreateAccountCharacterPage
                 ),
               ),
             ),
-            floatingActionButton: const FloatingActionButton(
-              onPressed: null,
-              tooltip: 'Info',
-              child: Icon(Icons.info),
+            floatingActionButton: FloatingActionButton(
+              onPressed: _openDialog,
+              child: const Icon(Icons.info),
             ),
           );
         });
@@ -107,25 +106,29 @@ class CreateAccountCharacterPage
 
   Step _infoSTep() {
     return Step(
-      subtitle: const Text(
-        'Escolha seu nome e sua facção',
-        style: TextStyle(
+      title: Text('create.account.character.page.first.title'.tr),
+      subtitle: Text(
+        'create.account.character.page.first.subtitle'.tr,
+        style: const TextStyle(
           color: Colors.black,
         ),
       ),
-      title: const Text('Informações do personagem'),
       content: Form(
         key: controller.createAccountCharacterFormKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
-              decoration:
-                  const InputDecoration(labelText: 'Nome do personagem'),
+              maxLength: 20,
+              decoration: InputDecoration(
+                  counterStyle: const TextStyle(color: Colors.black),
+                  errorMaxLines: 5,
+                  labelText:
+                      'create.account.character.page.step.first.name'.tr),
               validator: controller.validator,
             ),
             const SizedBox(height: 10),
-            const Text('Facção'),
+            Text('create.account.character.page.step.first.faction'.tr),
             DropdownButton<String>(
               iconEnabledColor: Colors.black,
               iconDisabledColor: Colors.black,
@@ -158,7 +161,7 @@ class CreateAccountCharacterPage
 
   Step _characterStep(List<CharacterModel>? state) {
     return Step(
-      title: const Text('Selecione um Personagem'),
+      title: Text('create.account.character.page.step.two.title'.tr),
       content: GridView.builder(
           physics: const ScrollPhysics(),
           shrinkWrap: true,
@@ -231,13 +234,15 @@ class CreateAccountCharacterPage
 
   Step _factionStep() {
     return Step(
-      title: const Text('Finalizar'),
+      title: Text('create.account.character.page.step.three.title'.tr),
       content: Column(
         children: [
-          _stepResult('Nome do personagem', controller.name.value),
-          _stepResult('Personagem', controller.characterName.value!),
-          _stepResult(
-              'Facção', controller.toFaction(controller.faction.value!)),
+          _stepResult('create.account.character.page.step.three.row.first'.tr,
+              controller.name.value),
+          _stepResult('create.account.character.page.step.three.row.two'.tr,
+              controller.characterName.value!),
+          _stepResult('create.account.character.page.step.three.row.three'.tr,
+              controller.toFaction(controller.faction.value!)),
         ],
       ),
       isActive: controller.currentStep >= 0,
@@ -255,12 +260,14 @@ class CreateAccountCharacterPage
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GradientButton(
-            title: controller.currentStep.value < 2 ? 'Próximo' : 'Concluir',
+            title: controller.currentStep.value < 2
+                ? 'create.account.character.page.button.next'.tr
+                : 'create.account.character.page.button.complete'.tr,
             callback: controlsDetails.onStepContinue,
           ),
           if (controller.currentStep.value != 0)
             GradientButton(
-              title: 'Voltar',
+              title: 'create.account.character.page.button.back'.tr,
               callback: controlsDetails.onStepCancel,
             ),
         ],
@@ -280,6 +287,29 @@ class CreateAccountCharacterPage
           ),
         ),
       ],
+    );
+  }
+
+  void _openDialog() {
+    Get.defaultDialog<dynamic>(
+      title: 'create.account.character.page.dialog.title'.tr,
+      content: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('create.account.character.page.dialog.content.first'.tr),
+            const SizedBox(height: 5),
+            Text('create.account.character.page.dialog.content.two'.tr),
+            const SizedBox(height: 5),
+            Text('create.account.character.page.dialog.content.three'.tr),
+            const SizedBox(height: 5),
+            Text('create.account.character.page.dialog.content.four'.tr),
+          ],
+        ),
+      ),
+      backgroundColor: const Color(0xffd0b562),
+      radius: 20,
     );
   }
 }

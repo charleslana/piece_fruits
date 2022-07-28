@@ -24,7 +24,7 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
         child: Scaffold(
           extendBodyBehindAppBar: true,
           appBar: CustomAppBar(
-            title: 'account.characters.page.title'.tr,
+            title: 'account.character.page.title'.tr,
             offset: controller.offset.value,
           ),
           body: controller.obx(
@@ -149,7 +149,7 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                                       const SizedBox(height: 7),
                                       GradientButton(
                                         title:
-                                            'account.characters.page.play.button'
+                                            'account.character.page.play.button'
                                                 .tr,
                                         fontSize: 13,
                                         callback: () => {},
@@ -166,8 +166,8 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                               padding: const EdgeInsets.all(10),
                               child: Center(
                                 child: GradientButton(
-                                  title: 'account.characters.page.create.button'
-                                      .tr,
+                                  title:
+                                      'account.character.page.create.button'.tr,
                                   fontSize: 13,
                                   callback: () =>
                                       navigate(createAccountCharacterRoute),

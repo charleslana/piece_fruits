@@ -67,10 +67,13 @@ class CreateAccountCharacterController extends GetxController
     if (value == null || value.trim().isEmpty) {
       return 'validation.field.empty'.tr;
     }
+    if (value.trim().length < 3 || value.trim().length > 20) {
+      return 'validation.field.name.length'.tr;
+    }
     if (!isName(value.trim())) {
       return 'validation.field.name'.tr;
     }
-    name.value = value;
+    name.value = value.trim();
     return null;
   }
 }

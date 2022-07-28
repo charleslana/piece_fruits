@@ -14,6 +14,9 @@ final List<LanguageModel> languages = [
 ];
 
 final Map<String, String> enUS = {
+  'faction.pirate': 'Pirate',
+  'faction.marine': 'Marine',
+  'faction.revolutionary': 'Revolutionary',
   'gender.male': 'Male',
   'gender.female': 'Female',
   'gender.other': 'Other',
@@ -29,6 +32,10 @@ final Map<String, String> enUS = {
   'validation.field.password.confirmation': 'Passwords must be the same',
   'validation.field.password.length':
       'Password must contain at least 6 characters',
+  'validation.field.name':
+      'The name can contain letters, numbers and underscore character separating each letter, the first and last character must be alphanumeric',
+  'validation.field.name.length':
+      'The name must contain a minimum of 3 characters and a maximum of 20 characters',
   'login.page.title': 'Login',
   'login.page.button': 'Play now',
   'login.page.email': 'Email',
@@ -45,12 +52,38 @@ final Map<String, String> enUS = {
   'register.page.service.terms.text':
       'By creating an account you agree to read all ',
   'register.page.service.terms.action': 'Service terms',
-  'account.characters.page.title': 'Characters',
-  'account.characters.page.play.button': 'Play',
-  'account.characters.page.create.button': 'Create',
+  'account.character.page.title': 'Characters',
+  'account.character.page.play.button': 'Play',
+  'account.character.page.create.button': 'Create',
+  'create.account.character.page.title': 'Create character',
+  'create.account.character.page.first.title': 'Character information',
+  'create.account.character.page.first.subtitle':
+      'Choose your name and your faction',
+  'create.account.character.page.step.first.name': "Character's name",
+  'create.account.character.page.step.first.faction': 'Faction',
+  'create.account.character.page.step.two.title': 'Select a character',
+  'create.account.character.page.step.three.title': 'Finalize',
+  'create.account.character.page.step.three.row.first': "Character's name",
+  'create.account.character.page.step.three.row.two': 'Character',
+  'create.account.character.page.step.three.row.three': 'Faction',
+  'create.account.character.page.button.next': 'Next',
+  'create.account.character.page.button.complete': 'Complete',
+  'create.account.character.page.button.back': 'Back',
+  'create.account.character.page.dialog.title': 'Create a new character',
+  'create.account.character.page.dialog.content.first':
+      'You can create up to 4 characters.',
+  'create.account.character.page.dialog.content.two':
+      'You can only create initial characters.',
+  'create.account.character.page.dialog.content.three':
+      'Choose a name and faction to create your first character.',
+  'create.account.character.page.dialog.content.four':
+      'You can later change the character, faction and name.',
 };
 
 final Map<String, String> ptBR = {
+  'faction.pirate': 'Pirata',
+  'faction.marine': 'Marinheiro',
+  'faction.revolutionary': 'Revolucionário',
   'gender.male': 'Masculino',
   'gender.female': 'Feminino',
   'gender.other': 'Outro',
@@ -66,6 +99,10 @@ final Map<String, String> ptBR = {
   'validation.field.password.confirmation': 'As senhas devem ser iguais',
   'validation.field.password.length':
       'A senha deve conter pelo menos 6 caracteres',
+  'validation.field.name':
+      'O nome pode conter letras, números e caractere underscore separando a cada letra, o primeiro e último caractere deve ser alfanuméricos',
+  'validation.field.name.length':
+      'O nome deve conter no mínimo 3 caracteres e no máximo 20 caracteres',
   'login.page.title': 'Conecte-se',
   'login.page.button': 'Jogue agora',
   'login.page.email': 'E-mail',
@@ -82,12 +119,38 @@ final Map<String, String> ptBR = {
   'register.page.service.terms.text':
       'Ao criar uma conta você aceita ler todos os ',
   'register.page.service.terms.action': 'Termos de serviço',
-  'account.characters.page.title': 'Personagens',
-  'account.characters.page.play.button': 'Jogar',
-  'account.characters.page.create.button': 'Criar',
+  'account.character.page.title': 'Personagens',
+  'account.character.page.play.button': 'Jogar',
+  'account.character.page.create.button': 'Criar',
+  'create.account.character.page.title': 'Criar personagem',
+  'create.account.character.page.first.title': 'Informações do personagem',
+  'create.account.character.page.first.subtitle':
+      'Escolha seu nome e sua facção',
+  'create.account.character.page.step.first.name': 'Nome do personagem',
+  'create.account.character.page.step.first.faction': 'Facção',
+  'create.account.character.page.step.two.title': 'Selecione um Personagem',
+  'create.account.character.page.step.three.title': 'Finalizar',
+  'create.account.character.page.step.three.row.first': 'Nome do personagem',
+  'create.account.character.page.step.three.row.two': 'Personagem',
+  'create.account.character.page.step.three.row.three': 'Facção',
+  'create.account.character.page.button.next': 'Próximo',
+  'create.account.character.page.button.complete': 'Concluir',
+  'create.account.character.page.button.back': 'Voltar',
+  'create.account.character.page.dialog.title': 'Criar um novo personagem',
+  'create.account.character.page.dialog.content.first':
+      'Você pode criar até 4 personagens.',
+  'create.account.character.page.dialog.content.two':
+      'Somente poderá criar personagens iniciais.',
+  'create.account.character.page.dialog.content.three':
+      'Escolha um nome e facção para criar seu primeiro personagem.',
+  'create.account.character.page.dialog.content.four':
+      'Você poderá trocar depois, o personagem, facção e nome.',
 };
 
 final Map<String, String> esES = {
+  'faction.pirate': 'Pirata',
+  'faction.marine': 'Marinero',
+  'faction.revolutionary': 'Revolucionario',
   'gender.male': 'Masculino',
   'gender.female': 'Femenino',
   'gender.other': 'Otro',
@@ -104,6 +167,10 @@ final Map<String, String> esES = {
       'Las contraseñas deben ser las mismas',
   'validation.field.password.length':
       'La contraseña debe contener al menos 6 caracteres',
+  'validation.field.name':
+      'El nombre puede contener letras, números y caracteres de subrayado separando cada letra, el primer y último carácter deben ser alfanuméricos',
+  'validation.field.name.length':
+      'El nombre debe contener un mínimo de 3 caracteres y un máximo de 20 caracteres',
   'login.page.title': 'Acceso',
   'login.page.button': 'Jugar ahora',
   'login.page.email': 'Correo electrónico',
@@ -119,7 +186,30 @@ final Map<String, String> esES = {
   'register.page.button': 'Registro',
   'register.page.service.terms.text': 'Al crear una cuenta, acepta leer todo ',
   'register.page.service.terms.action': 'Términos del servicio',
-  'account.characters.page.title': 'Personajes',
-  'account.characters.page.play.button': 'Jugar',
-  'account.characters.page.create.button': 'Crear',
+  'account.character.page.title': 'Personajes',
+  'account.character.page.play.button': 'Jugar',
+  'account.character.page.create.button': 'Crear',
+  'create.account.character.page.title': 'Crear personaje',
+  'create.account.character.page.first.title': 'Información del personaje',
+  'create.account.character.page.first.subtitle':
+      'Elige tu nombre y tu facción',
+  'create.account.character.page.step.first.name': 'Nombre del personaje',
+  'create.account.character.page.step.first.faction': 'Facción',
+  'create.account.character.page.step.two.title': 'Selecciona un personaje',
+  'create.account.character.page.step.three.title': 'Finalizar',
+  'create.account.character.page.step.three.row.first': 'Nombre del personaje',
+  'create.account.character.page.step.three.row.two': 'Personaje',
+  'create.account.character.page.step.three.row.three': 'Facción',
+  'create.account.character.page.button.next': 'Próximo',
+  'create.account.character.page.button.complete': 'Concluir',
+  'create.account.character.page.button.back': 'Regresar',
+  'create.account.character.page.dialog.title': 'Crear un nuevo personaje',
+  'create.account.character.page.dialog.content.first':
+      'Puedes crear hasta 4 personajes.',
+  'create.account.character.page.dialog.content.two':
+      'Solo puedes crear personajes iniciales.',
+  'create.account.character.page.dialog.content.three':
+      'Elige un nombre y una facción para crear tu primer personaje.',
+  'create.account.character.page.dialog.content.four':
+      'Más tarde puedes cambiar el personaje, la facción y el nombre.',
 };
