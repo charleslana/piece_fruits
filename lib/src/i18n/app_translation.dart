@@ -14,6 +14,11 @@ final List<LanguageModel> languages = [
 ];
 
 final Map<String, String> enUS = {
+  'dialog.confirmation.title': 'Attention!',
+  'dialog.confirmation.cancel.button': 'Cancel',
+  'dialog.confirmation.confirm.button': 'Confirm',
+  'dialog.confirmation.content':
+      'Do you want to confirm your action? it will not be possible to revert',
   'faction.pirate': 'Pirate',
   'faction.marine': 'Marine',
   'faction.revolutionary': 'Revolutionary',
@@ -81,6 +86,11 @@ final Map<String, String> enUS = {
 };
 
 final Map<String, String> ptBR = {
+  'dialog.confirmation.title': 'Atenção!',
+  'dialog.confirmation.cancel.button': 'Cancelar',
+  'dialog.confirmation.confirm.button': 'Confirmar',
+  'dialog.confirmation.content':
+      'Deseja confirmar sua ação? não será possível reverter',
   'faction.pirate': 'Pirata',
   'faction.marine': 'Marinheiro',
   'faction.revolutionary': 'Revolucionário',
@@ -148,6 +158,11 @@ final Map<String, String> ptBR = {
 };
 
 final Map<String, String> esES = {
+  'dialog.confirmation.title': '¡Aviso!',
+  'dialog.confirmation.cancel.button': 'Cancelar',
+  'dialog.confirmation.confirm.button': 'Confirmar',
+  'dialog.confirmation.content':
+      '¿Quieres confirmar tu acción? no será posible revertir',
   'faction.pirate': 'Pirata',
   'faction.marine': 'Marinero',
   'faction.revolutionary': 'Revolucionario',

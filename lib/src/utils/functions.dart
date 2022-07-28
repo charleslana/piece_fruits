@@ -44,6 +44,26 @@ void navigateOffAll(String route) {
   Get.offAllNamed<dynamic>(route);
 }
 
+void showConfirmation(VoidCallback callback) {
+  Get.defaultDialog<dynamic>(
+    onConfirm: () => {
+      goBack(),
+      callback(),
+    },
+    onCancel: null,
+    titleStyle: const TextStyle(color: Colors.red),
+    confirmTextColor: Colors.red,
+    cancelTextColor: Colors.black,
+    buttonColor: const Color(0xffd0b562),
+    backgroundColor: const Color(0xffd0b562),
+    textCancel: 'dialog.confirmation.cancel.button'.tr,
+    textConfirm: 'dialog.confirmation.confirm.button'.tr,
+    title: 'dialog.confirmation.title'.tr,
+    middleText: 'dialog.confirmation.content'.tr,
+    radius: 20,
+  );
+}
+
 String showConnectionFailure() {
   return responseModelToJson(ResponseModel(
     status: '503',

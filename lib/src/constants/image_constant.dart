@@ -15,3 +15,14 @@ String getPortraitAvatar(int characterId, String image) {
 String getThumbnailAvatar(int characterId, String image) {
   return 'assets/images/avatars/thumbnail/$characterId/$image.png';
 }
+
+String showFactionImage(String faction) {
+  switch (faction) {
+    case 'PIRATE':
+      return pirateIcon;
+    case 'MARINE':
+      return marineIcon;
+    default:
+      return revolutionaryIcon;
+  }
+}

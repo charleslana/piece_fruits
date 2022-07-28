@@ -86,7 +86,9 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                                     ),
                                   ),
                                   IconButton(
-                                    onPressed: () => {},
+                                    onPressed: () => showConfirmation(() =>
+                                        controller
+                                            .delete(accountCharacter.id!)),
                                     icon: const Icon(Icons.delete),
                                   ),
                                   Positioned(
@@ -102,7 +104,8 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                                               Colors.black45.withOpacity(0.2),
                                               BlendMode.srcATop,
                                             ),
-                                            child: Image.asset(pirateIcon),
+                                            child: Image.asset(showFactionImage(
+                                                accountCharacter.faction!)),
                                           ),
                                           Container(
                                             padding: const EdgeInsets.all(2),

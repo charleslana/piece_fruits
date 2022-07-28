@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:piece_fruits/src/enums/toast_enum.dart';
 import 'package:piece_fruits/src/interfaces/custom_scroll_abstract.dart';
 import 'package:piece_fruits/src/models/account_character_model.dart';
+import 'package:piece_fruits/src/models/response_model.dart';
 import 'package:piece_fruits/src/services/account_character_service.dart';
+import 'package:piece_fruits/src/utils/functions.dart';
 
 class AccountCharacterController extends GetxController
     with StateMixin<List<AccountCharacterModel>>
@@ -48,5 +51,21 @@ class AccountCharacterController extends GetxController
     }, onError: (dynamic err) {
       change(null, status: RxStatus.error(err.toString()));
     });
+  }
+
+  Future<void> delete(int id) async {
+    showLoading();
+    await accountCharacterService.deleteAccountCharacter(id).then(
+      (result) {
+        showToast(result.message!, ToastEnum.success);
+        _fetchAllAccountCharacters();
+        hideLoading();
+      },
+      onError: (dynamic error) {
+        hideLoading();
+        final ResponseModel responseModel = responseModelFromJson(error);
+        showToast(responseModel.message!, ToastEnum.error);
+      },
+    );
   }
 }

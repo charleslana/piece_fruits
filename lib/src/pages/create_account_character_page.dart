@@ -47,7 +47,7 @@ class CreateAccountCharacterPage
                           steps: [
                             _infoSTep(),
                             _characterStep(state),
-                            _factionStep(),
+                            _resultStep(),
                           ],
                         );
                       }),
@@ -232,7 +232,7 @@ class CreateAccountCharacterPage
     );
   }
 
-  Step _factionStep() {
+  Step _resultStep() {
     return Step(
       title: Text('create.account.character.page.step.three.title'.tr),
       content: Column(
@@ -259,17 +259,19 @@ class CreateAccountCharacterPage
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GradientButton(
-            title: controller.currentStep.value < 2
-                ? 'create.account.character.page.button.next'.tr
-                : 'create.account.character.page.button.complete'.tr,
-            callback: controlsDetails.onStepContinue,
-          ),
           if (controller.currentStep.value != 0)
             GradientButton(
               title: 'create.account.character.page.button.back'.tr,
               callback: controlsDetails.onStepCancel,
             ),
+          GradientButton(
+            title: controller.currentStep.value < 2
+                ? 'create.account.character.page.button.next'.tr
+                : 'create.account.character.page.button.complete'.tr,
+            callback: controller.currentStep.value < 2
+                ? controlsDetails.onStepContinue
+                : controller.create,
+          ),
         ],
       ),
     );

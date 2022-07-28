@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:piece_fruits/src/constants/data_constant.dart';
+import 'package:piece_fruits/src/constants/route_constant.dart';
+import 'package:piece_fruits/src/enums/toast_enum.dart';
 import 'package:piece_fruits/src/interfaces/custom_scroll_abstract.dart';
 import 'package:piece_fruits/src/interfaces/form_validator.dart';
 import 'package:piece_fruits/src/models/character_model.dart';
+import 'package:piece_fruits/src/models/create_account_character_model.dart';
+import 'package:piece_fruits/src/models/response_model.dart';
+import 'package:piece_fruits/src/services/account_character_service.dart';
 import 'package:piece_fruits/src/services/character_service.dart';
+import 'package:piece_fruits/src/utils/functions.dart';
 
 class CreateAccountCharacterController extends GetxController
     with StateMixin<List<CharacterModel>>, FormValidator
     implements CustomScrollAbstract {
   CreateAccountCharacterController({
     required this.characterService,
+    required this.accountCharacterService,
   });
 
   CharacterService characterService = CharacterService();
+  AccountCharacterService accountCharacterService = AccountCharacterService();
   final ScrollController scrollController = ScrollController();
   RxDouble offset = 0.0.obs;
   RxInt currentStep = 0.obs;
@@ -61,6 +69,37 @@ class CreateAccountCharacterController extends GetxController
     }, onError: (dynamic err) {
       change(null, status: RxStatus.error(err.toString()));
     });
+  }
+
+  void create() {
+    if (createAccountCharacterFormKey.currentState!.validate()) {
+      showLoading();
+      final CreateAccountCharacterModel createAccountCharacterModel =
+          CreateAccountCharacterModel(
+        characterId: characterId.value!,
+        name: name.value,
+        faction: faction.value!,
+      );
+      validateCreate(createAccountCharacterModel);
+    }
+  }
+
+  Future<void> validateCreate(
+      CreateAccountCharacterModel createAccountCharacter) async {
+    await accountCharacterService
+        .createAccountCharacter(createAccountCharacter)
+        .then(
+      (result) {
+        showToast(result.message!, ToastEnum.success);
+        navigateOffAll(accountCharacterRoute);
+        hideLoading();
+      },
+      onError: (dynamic error) {
+        hideLoading();
+        final ResponseModel responseModel = responseModelFromJson(error);
+        showToast(responseModel.message!, ToastEnum.error);
+      },
+    );
   }
 
   String? validator(String? value) {
