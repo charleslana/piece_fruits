@@ -83,6 +83,7 @@ final Map<String, String> enUS = {
       'Choose a name and faction to create your first character.',
   'create.account.character.page.dialog.content.four':
       'You can later change the character, faction and name.',
+  'create.account.character.page.dialog.button': 'Close',
 };
 
 final Map<String, String> ptBR = {
@@ -155,6 +156,7 @@ final Map<String, String> ptBR = {
       'Escolha um nome e facção para criar seu primeiro personagem.',
   'create.account.character.page.dialog.content.four':
       'Você poderá trocar depois, o personagem, facção e nome.',
+  'create.account.character.page.dialog.button': 'Fechar',
 };
 
 final Map<String, String> esES = {
@@ -227,4 +229,5 @@ final Map<String, String> esES = {
       'Elige un nombre y una facción para crear tu primer personaje.',
   'create.account.character.page.dialog.content.four':
       'Más tarde puedes cambiar el personaje, la facción y el nombre.',
+  'create.account.character.page.dialog.button': 'Cerca',
 };

@@ -16,8 +16,9 @@ class AppVersion extends StatelessWidget {
             const Text(
               'Powered by Charles Games',
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 12,
                 color: Colors.white,
+                fontFamily: 'Lato',
               ),
             ),
             FutureBuilder<PackageInfo>(
@@ -33,8 +34,9 @@ class AppVersion extends StatelessWidget {
                 return Text(
                   'V. ${snapshot.data!.version}',
                   style: const TextStyle(
-                    fontSize: 13,
+                    fontSize: 12,
                     color: Colors.white,
+                    fontFamily: 'Lato',
                   ),
                 );
               },

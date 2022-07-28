@@ -11,7 +11,7 @@ Widget getError({String? message}) {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
-          child: message != null ? Text(message) : const Text('Empty'),
+          child: message != null ? Text(message) : const Text('No data found'),
         ),
         const SizedBox(height: 10),
         GradientButton(

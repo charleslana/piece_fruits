@@ -46,6 +46,7 @@ class AccountCharacterController extends GetxController
   }
 
   Future<void> _fetchAllAccountCharacters() async {
+    change(null, status: RxStatus.loading());
     await accountCharacterService.getAllAccountCharacters().then((result) {
       change(result, status: RxStatus.success());
     }, onError: (dynamic err) {

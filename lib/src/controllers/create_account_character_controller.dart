@@ -62,6 +62,7 @@ class CreateAccountCharacterController extends GetxController
   }
 
   Future<void> _fetchAllCharacters() async {
+    change(null, status: RxStatus.loading());
     await characterService.getAllCharacters().then((result) {
       characterId.value = result.first.id;
       characterName.value = result.first.name;

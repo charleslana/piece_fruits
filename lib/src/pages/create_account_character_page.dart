@@ -1,7 +1,9 @@
 // ignore_for_file: use_setters_to_change_properties
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:piece_fruits/src/components/custom_app_bar.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
@@ -60,13 +62,15 @@ class CreateAccountCharacterPage
                     return getError(message: responseModel.message);
                   },
                   onLoading: const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                    ),
                   ),
                 ),
               ),
             ),
             floatingActionButton: FloatingActionButton(
-              onPressed: _openDialog,
+              onPressed: () => _showDialog(context),
               child: const Icon(Icons.info),
             ),
           );
@@ -174,57 +178,82 @@ class CreateAccountCharacterPage
           ),
           itemBuilder: (BuildContext context, int index) {
             final CharacterModel character = state[index];
-            return InkWell(
-              onTap: () {
-                controller
-                  ..characterId.value = character.id
-                  ..characterName.value = character.name;
-              },
-              child: Obx(() {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: controller.characterId.value! == character.id
-                        ? Border.all(
-                            width: 5,
-                          )
-                        : null,
-                  ),
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: ShaderMask(
-                        shaderCallback: (rect) {
-                          return LinearGradient(
-                            begin: Alignment.center,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.black,
-                              Colors.black.withOpacity(0.8),
-                              Colors.transparent
-                            ],
-                          ).createShader(
-                            Rect.fromLTRB(
-                              0,
-                              0,
-                              rect.width,
-                              rect.height,
-                            ),
-                          );
-                        },
-                        blendMode: BlendMode.dstIn,
-                        child: Image.asset(
-                          getThumbnailAvatar(
-                            character.id!,
-                            character.avatars!.first.image!,
-                          ),
-                          fit: BoxFit.cover,
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 375),
+              child: SlideAnimation(
+                verticalOffset: 50,
+                child: FadeInAnimation(
+                  child: InkWell(
+                    onTap: () {
+                      controller
+                        ..characterId.value = character.id
+                        ..characterName.value = character.name;
+                    },
+                    child: Obx(() {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: controller.characterId.value! == character.id
+                              ? Border.all(
+                                  width: 5,
+                                )
+                              : null,
                         ),
-                      ),
-                    ),
+                        child: JustTheTooltip(
+                          backgroundColor: Colors.black87,
+                          margin: const EdgeInsets.only(
+                            left: 20,
+                            right: 20,
+                          ),
+                          content: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(
+                              character.name!,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: ShaderMask(
+                                shaderCallback: (rect) {
+                                  return LinearGradient(
+                                    begin: Alignment.center,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Colors.black,
+                                      Colors.black.withOpacity(0.8),
+                                      Colors.transparent
+                                    ],
+                                  ).createShader(
+                                    Rect.fromLTRB(
+                                      0,
+                                      0,
+                                      rect.width,
+                                      rect.height,
+                                    ),
+                                  );
+                                },
+                                blendMode: BlendMode.dstIn,
+                                child: Image.asset(
+                                  getThumbnailAvatar(
+                                    character.id!,
+                                    character.avatars!.first.image!,
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
                   ),
-                );
-              }),
+                ),
+              ),
             );
           }),
       isActive: controller.currentStep >= 0,
@@ -281,23 +310,40 @@ class CreateAccountCharacterPage
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(key),
-        Text(
-          value,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
+        Expanded(
+          child: Wrap(
+            children: [
+              Text(key),
+              const SizedBox(width: 5),
+              Text(
+                value,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ),
       ],
     );
   }
 
-  void _openDialog() {
-    Get.defaultDialog<dynamic>(
-      title: 'create.account.character.page.dialog.title'.tr,
-      content: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
+  void _showDialog(BuildContext context) {
+    showDialog<dynamic>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text(
+          'create.account.character.page.dialog.title'.tr,
+          textAlign: TextAlign.center,
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+        backgroundColor: const Color(0xffd0b562),
+        scrollable: true,
+        content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('create.account.character.page.dialog.content.first'.tr),
@@ -309,9 +355,14 @@ class CreateAccountCharacterPage
             Text('create.account.character.page.dialog.content.four'.tr),
           ],
         ),
+        actionsAlignment: MainAxisAlignment.center,
+        actions: [
+          GradientButton(
+            title: 'create.account.character.page.dialog.button'.tr,
+            callback: () => Navigator.pop(context),
+          ),
+        ],
       ),
-      backgroundColor: const Color(0xffd0b562),
-      radius: 20,
     );
   }
 }
