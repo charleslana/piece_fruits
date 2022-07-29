@@ -17,6 +17,7 @@ class OverviewPage extends GetView<OverviewController> {
         appBar: CustomAppBar(
           title: 'Visão Geral',
           offset: controller.offset.value,
+          isHome: true,
         ),
         body: LoadingOverlay(
           child: Center(

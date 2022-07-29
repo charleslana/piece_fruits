@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/controllers/language_controller.dart';
 import 'package:piece_fruits/src/i18n/app_translation.dart';
 import 'package:piece_fruits/src/models/language_model.dart';
@@ -11,11 +12,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title = '',
     this.isGoBack = false,
     this.offset = 0,
+    this.isHome = false,
   }) : super(key: key);
 
   final String title;
   final bool isGoBack;
   final double offset;
+  final bool isHome;
 
   @override
   Size get preferredSize => const Size.fromHeight(56);
@@ -55,6 +58,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: offset > 40 ? Colors.black87 : Colors.transparent,
       elevation: 0,
       actions: [
+        if (isHome) ...[
+          IconButton(
+            onPressed: () => navigate(overviewRoute),
+            icon: Icon(
+              Icons.home,
+              color: offset > 40 ? Colors.white : Colors.black,
+            ),
+          ),
+          const SizedBox(width: 10),
+        ],
         DropdownButtonHideUnderline(
           child: DropdownButton<LanguageModel>(
             iconEnabledColor: Colors.black,
