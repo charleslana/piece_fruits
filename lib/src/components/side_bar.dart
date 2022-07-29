@@ -19,6 +19,7 @@ class SideBar extends StatelessWidget {
               child: Text('Drawer Header'),
             ),
             ListView.builder(
+              physics: const ScrollPhysics(),
               shrinkWrap: true,
               itemCount: 20,
               itemBuilder: (BuildContext context, int index) {
