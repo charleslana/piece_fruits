@@ -61,7 +61,9 @@ final ThemeData theme = ThemeData(
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: Color(0xffd0b562),
-    selectedItemColor: Colors.white,
+    selectedItemColor: Colors.black,
+    unselectedItemColor: Colors.black,
+    selectedLabelStyle: TextStyle(fontFamily: 'Lato'),
   ),
   tabBarTheme: const TabBarTheme(
     indicator: ShapeDecoration(

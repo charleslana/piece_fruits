@@ -8,6 +8,7 @@ import 'package:piece_fruits/src/bindings/loading_overlay_binding.dart';
 import 'package:piece_fruits/src/bindings/login_binding.dart';
 import 'package:piece_fruits/src/bindings/overview_binding.dart';
 import 'package:piece_fruits/src/bindings/register_binding.dart';
+import 'package:piece_fruits/src/bindings/side_bar_binding.dart';
 import 'package:piece_fruits/src/bindings/splash_screen_binding.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/pages/account_character_page.dart';
@@ -91,6 +92,7 @@ class RouteService {
         LanguageBinding(),
         LoadingOverlayBinding(),
         OverviewBinding(),
+        SideBarBinding(),
       ],
     );
   }

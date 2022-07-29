@@ -23,6 +23,7 @@ class ModelPage extends GetView<CreateAccountCharacterController> {
           child: Center(
             child: controller.obx(
               (state) => SingleChildScrollView(
+                controller: controller.scrollController,
                 physics: const BouncingScrollPhysics(),
                 child: Padding(
                   padding: const EdgeInsets.all(10),

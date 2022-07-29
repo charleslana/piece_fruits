@@ -84,7 +84,10 @@ flutter:
         - asset: assets/fonts/lato/Lato-Bold.ttf
           weight: 700        
         - asset: assets/fonts/lato/Lato-Black.ttf
-          weight: 900          
+          weight: 900 
+    - family: RpgAwesome
+      fonts:    
+        - asset: assets/fonts/rpg_awesome_icons/rpgawesome-webfont.ttf                  
 
 flutter_icons:
   android: true

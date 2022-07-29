@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:piece_fruits/src/controllers/side_bar_controller.dart';
 import 'package:piece_fruits/src/interfaces/custom_scroll_abstract.dart';
 import 'package:piece_fruits/src/services/account_character_service.dart';
 
@@ -13,6 +14,7 @@ class OverviewController extends GetxController
   AccountCharacterService accountCharacterService = AccountCharacterService();
   final ScrollController scrollController = ScrollController();
   RxDouble offset = 0.0.obs;
+  final SideBarController sideBarController = Get.find<SideBarController>();
 
   @override
   void onInit() {

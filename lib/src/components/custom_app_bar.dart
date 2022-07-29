@@ -29,6 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Get.find<LanguageController>();
 
     return AppBar(
+      automaticallyImplyLeading: false,
       leading: isGoBack
           ? IconButton(
               onPressed: goBack,
