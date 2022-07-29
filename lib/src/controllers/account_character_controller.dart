@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/enums/toast_enum.dart';
 import 'package:piece_fruits/src/interfaces/custom_scroll_abstract.dart';
 import 'package:piece_fruits/src/models/account_character_model.dart';
@@ -60,6 +61,21 @@ class AccountCharacterController extends GetxController
       (result) {
         showToast(result.message!, ToastEnum.success);
         _fetchAllAccountCharacters();
+        hideLoading();
+      },
+      onError: (dynamic error) {
+        hideLoading();
+        final ResponseModel responseModel = responseModelFromJson(error);
+        showToast(responseModel.message!, ToastEnum.error);
+      },
+    );
+  }
+
+  Future<void> select(int id) async {
+    showLoading();
+    await accountCharacterService.selectAccountCharacter(id).then(
+      (result) {
+        navigateOffAll(overviewRoute);
         hideLoading();
       },
       onError: (dynamic error) {

@@ -174,7 +174,8 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                                                   'account.character.page.play.button'
                                                       .tr,
                                               fontSize: 13,
-                                              callback: () => {},
+                                              callback: () => controller
+                                                  .select(accountCharacter.id!),
                                             ),
                                           ],
                                         ),

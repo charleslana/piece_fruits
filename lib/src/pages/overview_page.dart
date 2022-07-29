@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:piece_fruits/src/components/custom_app_bar.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
-import 'package:piece_fruits/src/controllers/create_account_character_controller.dart';
+import 'package:piece_fruits/src/controllers/overview_controller.dart';
 import 'package:piece_fruits/src/models/response_model.dart';
 import 'package:piece_fruits/src/utils/widgets.dart';
 
-class ModelPage extends GetView<CreateAccountCharacterController> {
-  const ModelPage({Key? key}) : super(key: key);
+class OverviewPage extends GetView<OverviewController> {
+  const OverviewPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +15,8 @@ class ModelPage extends GetView<CreateAccountCharacterController> {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: CustomAppBar(
-          title: 'Criar personagem',
+          title: 'Visão Geral',
           offset: controller.offset.value,
-          isGoBack: true,
         ),
         body: LoadingOverlay(
           child: Center(

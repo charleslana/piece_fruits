@@ -58,4 +58,35 @@ class AccountCharacterService extends GetConnect {
     }
     return AccountCharacterModel.listFromJson(response.body);
   }
+
+  Future<AccountCharacterModel> getDetailsAccountCharacter() async {
+    final response = await get<dynamic>('/account/character/details');
+    if (response.status.hasError) {
+      if (response.bodyString == null) {
+        return Future.error(showConnectionFailure());
+      }
+      return Future.error(response.bodyString.toString());
+    }
+    return AccountCharacterModel.decoderFromJson(response.body);
+  }
+
+  Future<void> logoutAccountCharacter() async {
+    final response = await post<dynamic>('/account/character/logout', null);
+    if (response.status.hasError) {
+      if (response.bodyString == null) {
+        return Future.error(showConnectionFailure());
+      }
+      return Future.error(response.bodyString.toString());
+    }
+  }
+
+  Future<void> selectAccountCharacter(int id) async {
+    final response = await post<dynamic>('/account/character/$id', null);
+    if (response.status.hasError) {
+      if (response.bodyString == null) {
+        return Future.error(showConnectionFailure());
+      }
+      return Future.error(response.bodyString.toString());
+    }
+  }
 }

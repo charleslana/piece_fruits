@@ -23,6 +23,9 @@ class AccountCharacterModel {
     this.character,
   });
 
+  factory AccountCharacterModel.decoderFromJson(dynamic json) =>
+      AccountCharacterModel.fromJson(json);
+
   factory AccountCharacterModel.fromJson(Map<String, dynamic> json) =>
       AccountCharacterModel(
         id: json['id'],
