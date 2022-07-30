@@ -31,7 +31,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(
             IconData(
-              0xe97d,
+              0xe91c,
               fontFamily: 'RpgAwesome',
             ),
           ),
@@ -49,7 +49,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(
             IconData(
-              0xe90f,
+              0xe97d,
               fontFamily: 'RpgAwesome',
             ),
           ),
