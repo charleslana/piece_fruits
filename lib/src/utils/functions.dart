@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/controllers/loading_overlay_controller.dart';
 import 'package:piece_fruits/src/enums/toast_enum.dart';
@@ -42,6 +43,13 @@ void navigateOff(String route) {
 
 void navigateOffAll(String route) {
   Get.offAllNamed<dynamic>(route);
+}
+
+String numberAbbreviation(dynamic myNumber) {
+  final String stringNumber = myNumber.toString();
+  final double doubleNumber = double.tryParse(stringNumber) ?? 0;
+  final NumberFormat numberFormat = NumberFormat.compact();
+  return numberFormat.format(doubleNumber);
 }
 
 void showConfirmation(VoidCallback callback) {

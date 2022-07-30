@@ -1,3 +1,4 @@
+const String bellyIcon = 'assets/images/icons/belly.png';
 const String charlesLogo = 'assets/images/layout/charles-logo.png';
 const String enIcon = 'assets/images/icons/en.png';
 const String esIcon = 'assets/images/icons/es.png';
