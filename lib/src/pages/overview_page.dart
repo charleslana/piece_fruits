@@ -14,16 +14,16 @@ class OverviewPage extends GetView<OverviewController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        key: controller.sideBarController.key,
-        extendBodyBehindAppBar: true,
-        appBar: CustomAppBar(
-          title: 'Visão Geral',
-          offset: controller.offset.value,
-          isHome: true,
-        ),
-        body: LoadingOverlay(
-          child: Center(
+      child: LoadingOverlay(
+        child: Scaffold(
+          key: controller.sideBarController.key,
+          extendBodyBehindAppBar: true,
+          appBar: CustomAppBar(
+            title: 'Visão Geral',
+            offset: controller.offset.value,
+            isHome: true,
+          ),
+          body: Center(
             child: controller.obx(
               (state) => SingleChildScrollView(
                 controller: controller.scrollController,
@@ -50,9 +50,9 @@ class OverviewPage extends GetView<OverviewController> {
               ),
             ),
           ),
+          drawer: const SideBar(),
+          bottomNavigationBar: const CustomBottomNavigationBar(),
         ),
-        drawer: const SideBar(),
-        bottomNavigationBar: const CustomBottomNavigationBar(),
       ),
     );
   }

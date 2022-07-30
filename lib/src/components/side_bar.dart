@@ -19,7 +19,7 @@ class SideBar extends GetView<SideBarController> {
           padding: EdgeInsets.zero,
           children: [
             SizedBox(
-              height: Get.height * 0.32,
+              height: 240,
               child: DrawerHeader(
                 decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 214, 177, 67),
@@ -224,7 +224,7 @@ class SideBar extends GetView<SideBarController> {
             ),
             _listTile(
               'Trocar de personagem',
-              'Alterne entre ps personagens da sua conta',
+              'Alterne entre os personagens da sua conta',
               Icons.switch_account_outlined,
               () => controller.logoutAccountCharacter(),
             ),
