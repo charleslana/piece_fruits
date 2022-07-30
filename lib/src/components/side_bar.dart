@@ -19,7 +19,7 @@ class SideBar extends GetView<SideBarController> {
           padding: EdgeInsets.zero,
           children: [
             SizedBox(
-              height: 220,
+              height: Get.height * 0.32,
               child: DrawerHeader(
                 decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 214, 177, 67),
