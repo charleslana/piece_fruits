@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:piece_fruits/src/components/rpg_awesome_icons.dart';
 import 'package:piece_fruits/src/controllers/side_bar_controller.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -20,39 +21,19 @@ class CustomBottomNavigationBar extends StatelessWidget {
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            IconData(
-              0xeae0,
-              fontFamily: 'RpgAwesome',
-            ),
-          ),
+          icon: Icon(RpgAwesome.vest),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            IconData(
-              0xe91c,
-              fontFamily: 'RpgAwesome',
-            ),
-          ),
+          icon: Icon(RpgAwesome.battered_axe),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            IconData(
-              0xe9c9,
-              fontFamily: 'RpgAwesome',
-            ),
-          ),
+          icon: Icon(RpgAwesome.flaming_claw),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            IconData(
-              0xe97d,
-              fontFamily: 'RpgAwesome',
-            ),
-          ),
+          icon: Icon(RpgAwesome.crossed_swords),
           label: '',
         ),
       ],
