@@ -73,8 +73,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ],
         DropdownButtonHideUnderline(
           child: DropdownButton<LanguageModel>(
-            iconEnabledColor: Colors.black,
-            iconDisabledColor: Colors.black,
+            iconEnabledColor: offset > minOffset ? Colors.white : Colors.black,
+            iconDisabledColor: offset > minOffset ? Colors.white : Colors.black,
             value: languageController.selectedLanguage.value,
             items: languages
                 .map(
