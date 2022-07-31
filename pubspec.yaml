@@ -20,6 +20,7 @@ dependencies:
   simple_animations: ^4.2.0
   flutter_staggered_animations:
     git: https://github.com/The-ring-io/flutter_staggered_animations.git
+  font_awesome_flutter: ^10.1.0  
   
   flutter_localizations:
     sdk: flutter 

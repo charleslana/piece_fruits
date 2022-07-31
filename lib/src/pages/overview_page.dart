@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:piece_fruits/src/components/custom_app_bar.dart';
@@ -294,9 +295,103 @@ class OverviewPage extends GetView<OverviewController> {
                                 0.9,
                                 0xead4,
                               ),
+                              GradientButton(
+                                title: 'Treinar',
+                                callback: () => {},
+                              ),
                             ],
                           ),
                         ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                onPressed: () => {},
+                                icon: const Icon(Icons.info),
+                              ),
+                              const SizedBox(width: 5),
+                              const Text(
+                                'Estatísticas',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          GridView.count(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            crossAxisCount: 4,
+                            mainAxisSpacing: 5,
+                            crossAxisSpacing: 5,
+                            childAspectRatio: 0.65,
+                            padding: const EdgeInsets.only(top: 10),
+                            children: [
+                              _statisticsCard(
+                                'Experiência',
+                                10,
+                                1000,
+                              ),
+                              _statisticsCard(
+                                'Vitórias de honra',
+                                5000,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Batalhas totais',
+                                0,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Vitórias',
+                                0,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Derrotas',
+                                0,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Empates',
+                                0,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Dano causado',
+                                0,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Dano sofrido',
+                                0,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Belly conquistado',
+                                0,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Belly perdido',
+                                0,
+                                0,
+                              ),
+                              _statisticsCard(
+                                'Pontos',
+                                0,
+                                0,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -383,6 +478,73 @@ class OverviewPage extends GetView<OverviewController> {
         ),
         const SizedBox(height: 20),
       ],
+    );
+  }
+
+  Widget _statisticsCard(String title, int value, int position) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(5),
+        child: Column(
+          children: [
+            Expanded(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(title),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                height: 30,
+                decoration: BoxDecoration(
+                  color: const Color(0xffd0b562).withOpacity(0.5),
+                  borderRadius: const BorderRadius.all(Radius.circular(3)),
+                  border: Border.all(
+                    color: Colors.black54,
+                  ),
+                ),
+                child: Center(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      numberAbbreviation(value),
+                      style: const TextStyle(
+                        height: 0,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Flexible(
+                    child: FaIcon(
+                      FontAwesomeIcons.medal,
+                      size: 15,
+                    ),
+                  ),
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        '$position º',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
