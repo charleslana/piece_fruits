@@ -585,7 +585,7 @@ class OverviewPage extends GetView<OverviewController> {
   void _showBiography() {
     Get.bottomSheet<dynamic>(
       SizedBox(
-        height: 250,
+        height: Get.height * 0.35,
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(
