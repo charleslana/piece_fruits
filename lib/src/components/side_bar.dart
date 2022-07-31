@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:piece_fruits/src/components/clock.dart';
+import 'package:piece_fruits/src/components/rpg_awesome_icons.dart';
+import 'package:piece_fruits/src/constants/color_constant.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/controllers/side_bar_controller.dart';
@@ -22,7 +24,7 @@ class SideBar extends GetView<SideBarController> {
               height: 240,
               child: DrawerHeader(
                 decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 214, 177, 67),
+                  color: deepBackgroundColor,
                 ),
                 child: Column(
                   children: [
@@ -36,7 +38,7 @@ class SideBar extends GetView<SideBarController> {
                               width: Get.width * 0.30,
                               height: 20,
                               decoration: BoxDecoration(
-                                color: const Color(0xffd0b562).withOpacity(0.5),
+                                color: backgroundColor.withOpacity(0.5),
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(3)),
                                 border: Border.all(
@@ -62,7 +64,7 @@ class SideBar extends GetView<SideBarController> {
                               barRadius: const Radius.circular(3),
                               lineHeight: 14,
                               percent: 1,
-                              backgroundColor: const Color(0xffd0b562),
+                              backgroundColor: backgroundColor,
                               progressColor: Colors.redAccent,
                               center: const Text(
                                 '300/300',
@@ -80,7 +82,7 @@ class SideBar extends GetView<SideBarController> {
                               barRadius: const Radius.circular(3),
                               lineHeight: 14,
                               percent: 1,
-                              backgroundColor: const Color(0xffd0b562),
+                              backgroundColor: backgroundColor,
                               progressColor: Colors.blueAccent,
                               center: const Text(
                                 '300/300',
@@ -102,8 +104,7 @@ class SideBar extends GetView<SideBarController> {
                                       padding: const EdgeInsets.all(2),
                                       child: CircleAvatar(
                                         radius: Get.width * 0.10,
-                                        backgroundColor:
-                                            const Color(0xffd0b562),
+                                        backgroundColor: backgroundColor,
                                         backgroundImage: AssetImage(
                                             getThumbnailAvatar(1, '1')),
                                       ),
@@ -165,10 +166,7 @@ class SideBar extends GetView<SideBarController> {
                         Column(
                           children: [
                             const Icon(
-                              IconData(
-                                0xe9e4,
-                                fontFamily: 'RpgAwesome',
-                              ),
+                              RpgAwesome.gold_bar,
                               color: Colors.yellowAccent,
                             ),
                             Text(numberAbbreviation(0)),
@@ -177,10 +175,7 @@ class SideBar extends GetView<SideBarController> {
                         Column(
                           children: [
                             const Icon(
-                              IconData(
-                                0xe9e0,
-                                fontFamily: 'RpgAwesome',
-                              ),
+                              RpgAwesome.gem,
                               color: Colors.amberAccent,
                             ),
                             Text(numberAbbreviation(0)),

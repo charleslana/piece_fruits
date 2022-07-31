@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piece_fruits/src/constants/color_constant.dart';
 
 final ThemeData theme = ThemeData(
   useMaterial3: true,
@@ -28,10 +29,11 @@ final ThemeData theme = ThemeData(
     ),
     headlineLarge: TextStyle(color: Colors.black),
   ),
-  scaffoldBackgroundColor: const Color(0xffd0b562),
+  hintColor: Colors.black,
+  scaffoldBackgroundColor: backgroundColor,
   colorScheme: const ColorScheme.dark().copyWith(
-    primary: const Color(0xffd0b562),
-    secondary: const Color(0xffd0b562),
+    primary: backgroundColor,
+    secondary: backgroundColor,
   ),
   splashColor: Colors.black.withOpacity(0.3),
   inputDecorationTheme: const InputDecorationTheme(
@@ -54,20 +56,20 @@ final ThemeData theme = ThemeData(
   buttonTheme: const ButtonThemeData(
     buttonColor: Colors.black,
   ),
-  canvasColor: const Color(0xffd0b562),
+  canvasColor: backgroundColor,
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: Color(0xffd0b562),
+    backgroundColor: backgroundColor,
     foregroundColor: Colors.black,
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    backgroundColor: Color(0xffd0b562),
+    backgroundColor: backgroundColor,
     selectedItemColor: Colors.black,
     unselectedItemColor: Colors.black,
     selectedLabelStyle: TextStyle(fontFamily: 'Lato'),
   ),
   iconTheme: const IconThemeData(color: Colors.black),
   cardTheme: const CardTheme(
-    color: Color(0xffd0b562),
+    color: backgroundColor,
   ),
   errorColor: Colors.red,
   tabBarTheme: const TabBarTheme(

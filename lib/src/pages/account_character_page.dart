@@ -6,6 +6,7 @@ import 'package:piece_fruits/src/components/custom_app_bar.dart';
 import 'package:piece_fruits/src/components/custom_shader_mask.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
+import 'package:piece_fruits/src/constants/color_constant.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
 import 'package:piece_fruits/src/constants/route_constant.dart';
 import 'package:piece_fruits/src/controllers/account_character_controller.dart';
@@ -140,7 +141,7 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                                                 lineHeight: 14,
                                                 percent: 0.5,
                                                 backgroundColor:
-                                                    const Color(0xffd0b562),
+                                                    backgroundColor,
                                                 progressColor: Colors.redAccent,
                                                 center: const Text(
                                                   '300/300',

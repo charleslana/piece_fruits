@@ -7,7 +7,9 @@ import 'package:piece_fruits/src/components/custom_bottom_navigation_bar.dart';
 import 'package:piece_fruits/src/components/custom_shader_mask.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
+import 'package:piece_fruits/src/components/rpg_awesome_icons.dart';
 import 'package:piece_fruits/src/components/side_bar.dart';
+import 'package:piece_fruits/src/constants/color_constant.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
 import 'package:piece_fruits/src/controllers/overview_controller.dart';
 import 'package:piece_fruits/src/models/response_model.dart';
@@ -44,8 +46,7 @@ class OverviewPage extends GetView<OverviewController> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 218, 188, 98)
-                                  .withOpacity(0.3),
+                              color: lightBackgroundColor.withOpacity(0.3),
                             ),
                             width: double.infinity,
                             height: 250,
@@ -265,35 +266,35 @@ class OverviewPage extends GetView<OverviewController> {
                                 5,
                                 5,
                                 0.9,
-                                0xea48,
+                                RpgAwesome.muscle_up,
                               ),
                               _columnAttribute(
                                 'Defesa',
                                 5,
                                 5,
                                 0.9,
-                                0xea87,
+                                RpgAwesome.round_shield,
                               ),
                               _columnAttribute(
                                 'Espada',
                                 5,
                                 5,
                                 0.9,
-                                0xe946,
+                                RpgAwesome.broadsword,
                               ),
                               _columnAttribute(
                                 'Arma',
                                 5,
                                 5,
                                 0.9,
-                                0xea49,
+                                RpgAwesome.musket,
                               ),
                               _columnAttribute(
                                 'Fruta',
                                 5,
                                 5,
                                 0.9,
-                                0xead4,
+                                RpgAwesome.trefoil_lily,
                               ),
                               GradientButton(
                                 title: 'Treinar',
@@ -394,6 +395,44 @@ class OverviewPage extends GetView<OverviewController> {
                         ],
                       ),
                     ),
+                    Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: lightBackgroundColor.withOpacity(0.3),
+                          ),
+                          width: double.infinity,
+                          height: 150,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    onPressed: _showBiography,
+                                    icon: const Icon(Icons.edit),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  const Text(
+                                    'Biografia',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const Text(
+                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a"),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -418,7 +457,7 @@ class OverviewPage extends GetView<OverviewController> {
   }
 
   Widget _columnAttribute(String attribute, int totalValue, int baseValue,
-      double percent, int icon) {
+      double percent, IconData icon) {
     return Column(
       children: [
         Row(
@@ -468,13 +507,8 @@ class OverviewPage extends GetView<OverviewController> {
           lineHeight: 14,
           percent: percent,
           backgroundColor: Colors.black.withOpacity(0.5),
-          progressColor: const Color.fromARGB(255, 218, 188, 98),
-          leading: Icon(
-            IconData(
-              icon,
-              fontFamily: 'RpgAwesome',
-            ),
-          ),
+          progressColor: lightBackgroundColor,
+          leading: Icon(icon),
         ),
         const SizedBox(height: 20),
       ],
@@ -497,7 +531,7 @@ class OverviewPage extends GetView<OverviewController> {
               child: Container(
                 height: 30,
                 decoration: BoxDecoration(
-                  color: const Color(0xffd0b562).withOpacity(0.5),
+                  color: backgroundColor.withOpacity(0.5),
                   borderRadius: const BorderRadius.all(Radius.circular(3)),
                   border: Border.all(
                     color: Colors.black54,
@@ -545,6 +579,34 @@ class OverviewPage extends GetView<OverviewController> {
           ],
         ),
       ),
+    );
+  }
+
+  void _showBiography() {
+    Get.bottomSheet<dynamic>(
+      SizedBox(
+        height: 250,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              const TextField(
+                maxLines: 7,
+                maxLength: 200,
+                decoration:
+                    InputDecoration.collapsed(hintText: 'Enter your text here'),
+              ),
+              const SizedBox(height: 10),
+              GradientButton(
+                title: 'Salvar',
+                fontSize: 13,
+                callback: () => {},
+              ),
+            ],
+          ),
+        ),
+      ),
+      backgroundColor: backgroundColor,
     );
   }
 }

@@ -8,6 +8,7 @@ import 'package:piece_fruits/src/components/custom_app_bar.dart';
 import 'package:piece_fruits/src/components/custom_shader_mask.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
+import 'package:piece_fruits/src/constants/color_constant.dart';
 import 'package:piece_fruits/src/constants/data_constant.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
 import 'package:piece_fruits/src/controllers/create_account_character_controller.dart';
@@ -320,7 +321,7 @@ class CreateAccountCharacterPage
             Radius.circular(20),
           ),
         ),
-        backgroundColor: const Color(0xffd0b562),
+        backgroundColor: backgroundColor,
         scrollable: true,
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
