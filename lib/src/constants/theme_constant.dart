@@ -65,6 +65,11 @@ final ThemeData theme = ThemeData(
     unselectedItemColor: Colors.black,
     selectedLabelStyle: TextStyle(fontFamily: 'Lato'),
   ),
+  iconTheme: const IconThemeData(color: Colors.black),
+  cardTheme: const CardTheme(
+    color: Color(0xffd0b562),
+  ),
+  errorColor: Colors.red,
   tabBarTheme: const TabBarTheme(
     indicator: ShapeDecoration(
       shape: UnderlineInputBorder(
@@ -76,8 +81,4 @@ final ThemeData theme = ThemeData(
     ),
     labelColor: Colors.white,
   ),
-  cardTheme: const CardTheme(
-    color: Color(0xffd0b562),
-  ),
-  errorColor: Colors.red,
 );

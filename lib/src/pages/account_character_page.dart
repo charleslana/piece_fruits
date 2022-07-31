@@ -3,6 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:piece_fruits/src/components/custom_app_bar.dart';
+import 'package:piece_fruits/src/components/custom_shader_mask.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
@@ -67,32 +68,10 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                                       children: [
                                         Align(
                                           alignment: Alignment.topCenter,
-                                          child: ShaderMask(
-                                            shaderCallback: (rect) {
-                                              return LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  Colors.black,
-                                                  Colors.black.withOpacity(0.8),
-                                                  Colors.transparent
-                                                ],
-                                              ).createShader(
-                                                Rect.fromLTRB(
-                                                  0,
-                                                  0,
-                                                  rect.width,
-                                                  rect.height,
-                                                ),
-                                              );
-                                            },
-                                            blendMode: BlendMode.dstIn,
-                                            child: Image.asset(
-                                              getThumbnailAvatar(
-                                                accountCharacter.character!.id!,
-                                                accountCharacter.image!,
-                                              ),
-                                              fit: BoxFit.cover,
+                                          child: CustomShaderMask(
+                                            image: getThumbnailAvatar(
+                                              accountCharacter.character!.id!,
+                                              accountCharacter.image!,
                                             ),
                                           ),
                                         ),
@@ -100,7 +79,10 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                                           onPressed: () => showConfirmation(
                                               () => controller.delete(
                                                   accountCharacter.id!)),
-                                          icon: const Icon(Icons.delete),
+                                          icon: const Icon(
+                                            Icons.delete,
+                                            color: Colors.redAccent,
+                                          ),
                                         ),
                                         Positioned(
                                           top: -25,
@@ -156,9 +138,9 @@ class AccountCharacterPage extends GetView<AccountCharacterController> {
                                                 barRadius:
                                                     const Radius.circular(50),
                                                 lineHeight: 14,
-                                                percent: 0.9,
+                                                percent: 0.5,
                                                 backgroundColor:
-                                                    const Color(0xff26143f),
+                                                    const Color(0xffd0b562),
                                                 progressColor: Colors.redAccent,
                                                 center: const Text(
                                                   '300/300',

@@ -5,6 +5,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:piece_fruits/src/components/custom_app_bar.dart';
+import 'package:piece_fruits/src/components/custom_shader_mask.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
 import 'package:piece_fruits/src/components/loading_overlay.dart';
 import 'package:piece_fruits/src/constants/data_constant.dart';
@@ -218,32 +219,10 @@ class CreateAccountCharacterPage
                           child: Card(
                             child: Padding(
                               padding: const EdgeInsets.all(5),
-                              child: ShaderMask(
-                                shaderCallback: (rect) {
-                                  return LinearGradient(
-                                    begin: Alignment.center,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Colors.black,
-                                      Colors.black.withOpacity(0.8),
-                                      Colors.transparent
-                                    ],
-                                  ).createShader(
-                                    Rect.fromLTRB(
-                                      0,
-                                      0,
-                                      rect.width,
-                                      rect.height,
-                                    ),
-                                  );
-                                },
-                                blendMode: BlendMode.dstIn,
-                                child: Image.asset(
-                                  getThumbnailAvatar(
-                                    character.id!,
-                                    character.avatars!.first.image!,
-                                  ),
-                                  fit: BoxFit.cover,
+                              child: CustomShaderMask(
+                                image: getThumbnailAvatar(
+                                  character.id!,
+                                  character.avatars!.first.image!,
                                 ),
                               ),
                             ),

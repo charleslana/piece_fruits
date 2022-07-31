@@ -13,12 +13,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isGoBack = false,
     this.offset = 0,
     this.isHome = false,
+    this.minOffset = 15,
   }) : super(key: key);
 
   final String title;
   final bool isGoBack;
   final double offset;
   final bool isHome;
+  final double minOffset;
 
   @override
   Size get preferredSize => const Size.fromHeight(56);
@@ -35,7 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: goBack,
               icon: Icon(
                 Icons.arrow_back_ios_new,
-                color: offset > 40 ? Colors.white : Colors.black,
+                color: offset > minOffset ? Colors.white : Colors.black,
               ),
             )
           : null,
@@ -48,15 +50,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.white,
               offset: Offset(
                 5,
-                5,
+                1,
               ),
             ),
           ],
-          color: offset > 40 ? Colors.white : Colors.black,
+          color: offset > minOffset ? Colors.white : Colors.black,
         ),
       ),
       centerTitle: true,
-      backgroundColor: offset > 40 ? Colors.black87 : Colors.transparent,
+      backgroundColor: offset > minOffset ? Colors.black87 : Colors.transparent,
       elevation: 0,
       actions: [
         if (isHome) ...[
@@ -64,7 +66,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () => navigate(overviewRoute),
             icon: Icon(
               Icons.home,
-              color: offset > 40 ? Colors.white : Colors.black,
+              color: offset > minOffset ? Colors.white : Colors.black,
             ),
           ),
           const SizedBox(width: 10),
