@@ -17,7 +17,7 @@ class GradientButton extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(25),
       onTap: callback,
-      child: Container(
+      child: Ink(
         padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
         decoration: BoxDecoration(
           gradient: const LinearGradient(

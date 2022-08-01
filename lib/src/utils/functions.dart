@@ -14,6 +14,16 @@ void _closeToast() {
   }
 }
 
+double calculateBar(int attribute, List<int> attributes) {
+  final int sumAttributes =
+      attributes.fold<int>(0, (int sum, int item) => sum + item);
+  final double percent = attribute / sumAttributes;
+  if (percent > 1) {
+    return 1;
+  }
+  return percent;
+}
+
 void closeKeyboard() {
   FocusManager.instance.primaryFocus?.unfocus();
 }
