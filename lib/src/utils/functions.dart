@@ -128,3 +128,25 @@ void showToast(String message, ToastEnum toast) {
     duration: const Duration(seconds: 4),
   );
 }
+
+String toGender(String gender) {
+  switch (gender) {
+    case 'MALE':
+      return 'gender.male'.tr;
+    case 'FEMALE':
+      return 'gender.female'.tr;
+    default:
+      return 'gender.other'.tr;
+  }
+}
+
+String toFaction(String faction) {
+  switch (faction) {
+    case 'PIRATE':
+      return 'faction.pirate'.tr;
+    case 'MARINE':
+      return 'faction.marine'.tr;
+    default:
+      return 'faction.revolutionary'.tr;
+  }
+}

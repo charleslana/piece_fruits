@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:piece_fruits/src/controllers/side_bar_controller.dart';
+import 'package:piece_fruits/src/enums/toast_enum.dart';
 import 'package:piece_fruits/src/interfaces/custom_scroll_abstract.dart';
+import 'package:piece_fruits/src/models/account_character_model.dart';
+import 'package:piece_fruits/src/models/response_model.dart';
+import 'package:piece_fruits/src/models/update_account_character_model.dart';
 import 'package:piece_fruits/src/services/account_character_service.dart';
+import 'package:piece_fruits/src/utils/functions.dart';
 
 class OverviewController extends GetxController
-    with StateMixin<String>
+    with StateMixin<AccountCharacterModel>
     implements CustomScrollAbstract {
   OverviewController({
     required this.accountCharacterService,
@@ -15,6 +20,8 @@ class OverviewController extends GetxController
   final ScrollController scrollController = ScrollController();
   RxDouble offset = 0.0.obs;
   final SideBarController sideBarController = Get.find<SideBarController>();
+  final GlobalKey<FormState> overViewFormKey = GlobalKey<FormState>();
+  final TextEditingController biographyController = TextEditingController();
 
   @override
   void onInit() {
@@ -44,6 +51,52 @@ class OverviewController extends GetxController
   }
 
   Future<void> _fetchDetailsCharacter() async {
-    change(null, status: RxStatus.success());
+    change(null, status: RxStatus.loading());
+    await accountCharacterService.getDetailsAccountCharacter().then((result) {
+      change(result, status: RxStatus.success());
+      biographyController.text = result.biography ?? '';
+    }, onError: (dynamic err) {
+      change(null, status: RxStatus.error(err.toString()));
+    });
+  }
+
+  void updateBiography() {
+    closeKeyboard();
+    if (overViewFormKey.currentState!.validate()) {
+      showLoading();
+      final UpdateAccountCharacterModel updateAccountCharacterModel =
+          UpdateAccountCharacterModel(
+        biography: biographyController.text.trim(),
+      );
+      validateUpdateBiography(updateAccountCharacterModel);
+    }
+  }
+
+  Future<void> validateUpdateBiography(
+      UpdateAccountCharacterModel updateAccountCharacter) async {
+    await accountCharacterService
+        .updateAccountCharacter(updateAccountCharacter)
+        .then(
+      (result) {
+        goBack();
+        showToast(result.message!, ToastEnum.success);
+        hideLoading();
+      },
+      onError: (dynamic error) {
+        hideLoading();
+        final ResponseModel responseModel = responseModelFromJson(error);
+        showToast(responseModel.message!, ToastEnum.error);
+      },
+    );
+  }
+
+  String? validator(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'validation.field.empty'.tr;
+    }
+    if (value.trim().length < 10 || value.trim().length > 200) {
+      return 'validation.field.name.length'.tr;
+    }
+    return null;
   }
 }

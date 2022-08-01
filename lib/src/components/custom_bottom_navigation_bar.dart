@@ -45,6 +45,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       case 0:
         final SideBarController sideBarController =
             Get.find<SideBarController>();
+        sideBarController.fetchDetailsCharacter();
         sideBarController.key.currentState!.openDrawer();
         break;
       case 1:

@@ -9,6 +9,7 @@ import 'package:piece_fruits/src/components/starter_bg.dart';
 import 'package:piece_fruits/src/constants/data_constant.dart';
 import 'package:piece_fruits/src/controllers/register_controller.dart';
 import 'package:piece_fruits/src/services/language_service.dart';
+import 'package:piece_fruits/src/utils/functions.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -100,8 +101,7 @@ class RegisterPage extends StatelessWidget {
                                               InkWell(
                                                 onTap: () => controller
                                                     .gender.value = gender,
-                                                child: Text(controller
-                                                    .toGender(gender)),
+                                                child: Text(toGender(gender)),
                                               ),
                                             ],
                                           ),

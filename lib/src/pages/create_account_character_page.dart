@@ -14,6 +14,7 @@ import 'package:piece_fruits/src/constants/image_constant.dart';
 import 'package:piece_fruits/src/controllers/create_account_character_controller.dart';
 import 'package:piece_fruits/src/models/character_model.dart';
 import 'package:piece_fruits/src/models/response_model.dart';
+import 'package:piece_fruits/src/utils/functions.dart';
 import 'package:piece_fruits/src/utils/widgets.dart';
 
 class CreateAccountCharacterPage
@@ -151,7 +152,7 @@ class CreateAccountCharacterPage
               items: factions.map((String faction) {
                 return DropdownMenuItem<String>(
                   value: faction,
-                  child: Text(controller.toFaction(faction)),
+                  child: Text(toFaction(faction)),
                 );
               }).toList(),
               onChanged: (String? value) => controller.faction.value = value,
@@ -251,7 +252,7 @@ class CreateAccountCharacterPage
           _stepResult('create.account.character.page.step.three.row.two'.tr,
               controller.characterName.value!),
           _stepResult('create.account.character.page.step.three.row.three'.tr,
-              controller.toFaction(controller.faction.value!)),
+              toFaction(controller.faction.value!)),
         ],
       ),
       isActive: controller.currentStep >= 0,

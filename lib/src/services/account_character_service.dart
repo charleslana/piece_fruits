@@ -3,6 +3,7 @@ import 'package:piece_fruits/src/constants/config_constant.dart';
 import 'package:piece_fruits/src/models/account_character_model.dart';
 import 'package:piece_fruits/src/models/create_account_character_model.dart';
 import 'package:piece_fruits/src/models/response_model.dart';
+import 'package:piece_fruits/src/models/update_account_character_model.dart';
 import 'package:piece_fruits/src/services/language_service.dart';
 import 'package:piece_fruits/src/services/login_service.dart';
 import 'package:piece_fruits/src/utils/functions.dart';
@@ -88,5 +89,18 @@ class AccountCharacterService extends GetConnect {
       }
       return Future.error(response.bodyString.toString());
     }
+  }
+
+  Future<ResponseModel> updateAccountCharacter(
+      UpdateAccountCharacterModel updateAccountCharacter) async {
+    final response = await put<dynamic>(
+        '/account/character', updateAccountCharacter.toJson());
+    if (response.status.hasError) {
+      if (response.bodyString == null) {
+        return Future.error(showConnectionFailure());
+      }
+      return Future.error(response.bodyString.toString());
+    }
+    return ResponseModel.decoderFromJson(response.body);
   }
 }
