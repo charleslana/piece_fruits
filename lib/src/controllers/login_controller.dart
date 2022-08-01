@@ -63,11 +63,10 @@ class LoginController extends GetxController
       (result) {
         result = result.copyWith(password: _encryptService.encrypt(password));
         loginService.saveLogin(result);
-        navigateOff(accountCharacterRoute);
-        hideLoading();
+        navigateOffAll(accountCharacterRoute);
       },
       onError: (dynamic error) {
-        hideLoading();
+        goBack();
         passwordController.clear();
         final ResponseModel responseModel = responseModelFromJson(error);
         showToast(responseModel.message!, ToastEnum.error);

@@ -59,12 +59,12 @@ class AccountCharacterController extends GetxController
     showLoading();
     await accountCharacterService.deleteAccountCharacter(id).then(
       (result) {
+        goBack();
         showToast(result.message!, ToastEnum.success);
         _fetchAllAccountCharacters();
-        hideLoading();
       },
       onError: (dynamic error) {
-        hideLoading();
+        goBack();
         final ResponseModel responseModel = responseModelFromJson(error);
         showToast(responseModel.message!, ToastEnum.error);
       },
@@ -76,10 +76,9 @@ class AccountCharacterController extends GetxController
     await accountCharacterService.selectAccountCharacter(id).then(
       (result) {
         navigateOffAll(overviewRoute);
-        hideLoading();
       },
       onError: (dynamic error) {
-        hideLoading();
+        goBack();
         final ResponseModel responseModel = responseModelFromJson(error);
         showToast(responseModel.message!, ToastEnum.error);
       },

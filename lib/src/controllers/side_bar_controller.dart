@@ -34,10 +34,9 @@ class SideBarController extends GetxController
     await accountCharacterService.logoutAccountCharacter().then(
       (result) {
         navigateOffAll(accountCharacterRoute);
-        hideLoading();
       },
       onError: (dynamic error) {
-        hideLoading();
+        goBack();
         final ResponseModel responseModel = responseModelFromJson(error);
         showToast(responseModel.message!, ToastEnum.error);
       },

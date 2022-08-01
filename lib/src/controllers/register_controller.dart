@@ -78,10 +78,9 @@ class RegisterController extends GetxController
       (result) {
         showToast(result.message!, ToastEnum.success);
         navigateOffAll(loginRoute);
-        hideLoading();
       },
       onError: (dynamic error) {
-        hideLoading();
+        goBack();
         final ResponseModel responseModel = responseModelFromJson(error);
         showToast(responseModel.message!, ToastEnum.error);
       },

@@ -4,7 +4,6 @@ import 'package:piece_fruits/src/bindings/account_character_binding.dart';
 import 'package:piece_fruits/src/bindings/character_binding.dart';
 import 'package:piece_fruits/src/bindings/landing_binding.dart';
 import 'package:piece_fruits/src/bindings/language_binding.dart';
-import 'package:piece_fruits/src/bindings/loading_overlay_binding.dart';
 import 'package:piece_fruits/src/bindings/login_binding.dart';
 import 'package:piece_fruits/src/bindings/overview_binding.dart';
 import 'package:piece_fruits/src/bindings/register_binding.dart';
@@ -27,7 +26,6 @@ class RouteService {
       transition: Transition.leftToRight,
       bindings: [
         LanguageBinding(),
-        LoadingOverlayBinding(),
         AccountCharacterBinding(),
       ],
     );
@@ -40,7 +38,6 @@ class RouteService {
       transition: Transition.rightToLeft,
       bindings: [
         LanguageBinding(),
-        LoadingOverlayBinding(),
         CharacterBinding(),
       ],
     );
@@ -77,7 +74,6 @@ class RouteService {
       transition: Transition.rightToLeft,
       bindings: [
         LanguageBinding(),
-        LoadingOverlayBinding(),
         LoginBinding(),
       ],
     );
@@ -90,7 +86,6 @@ class RouteService {
       transition: Transition.leftToRight,
       bindings: [
         LanguageBinding(),
-        LoadingOverlayBinding(),
         OverviewBinding(),
         SideBarBinding(),
       ],
@@ -104,7 +99,6 @@ class RouteService {
       transition: Transition.rightToLeft,
       bindings: [
         LanguageBinding(),
-        LoadingOverlayBinding(),
         RegisterBinding(),
       ],
     );

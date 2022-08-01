@@ -72,6 +72,8 @@ final ThemeData theme = ThemeData(
     color: backgroundColor,
   ),
   errorColor: Colors.red,
+  bottomSheetTheme:
+      const BottomSheetThemeData(backgroundColor: backgroundColor),
   tabBarTheme: const TabBarTheme(
     indicator: ShapeDecoration(
       shape: UnderlineInputBorder(

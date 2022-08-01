@@ -6,7 +6,6 @@ import 'package:piece_fruits/src/components/custom_app_bar.dart';
 import 'package:piece_fruits/src/components/custom_bottom_navigation_bar.dart';
 import 'package:piece_fruits/src/components/custom_shader_mask.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
-import 'package:piece_fruits/src/components/loading_overlay.dart';
 import 'package:piece_fruits/src/components/rpg_awesome_icons.dart';
 import 'package:piece_fruits/src/components/side_bar.dart';
 import 'package:piece_fruits/src/constants/color_constant.dart';
@@ -23,445 +22,440 @@ class OverviewPage extends GetView<OverviewController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Obx(() {
-        return LoadingOverlay(
-          child: Scaffold(
-            key: controller.sideBarController.key,
-            extendBodyBehindAppBar: true,
-            appBar: CustomAppBar(
-              title: 'Visão Geral',
-              offset: controller.offset.value,
-              isHome: true,
-              minOffset: 10,
-            ),
-            body: controller.obx(
-              (state) => SingleChildScrollView(
-                controller: controller.scrollController,
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 56),
-                    SizedBox(
-                      height: 250,
-                      child: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: lightBackgroundColor.withOpacity(0.3),
-                            ),
-                            width: double.infinity,
-                            height: 250,
-                            child: CustomShaderMask(
-                              image: getPortraitAvatar(
-                                state!.character!.id!,
-                                state.image!,
-                              ),
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                          Positioned(
-                            top: 5,
-                            right: 5,
-                            child: OutlinedButton.icon(
-                              onPressed: () => {},
-                              icon: const Icon(
-                                Icons.star,
-                                color: Colors.white,
-                                size: 20,
-                              ),
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.resolveWith<Color>(
-                                        (states) {
-                                  if (states.contains(MaterialState.disabled)) {
-                                    return Colors.grey.withOpacity(0.5);
-                                  }
-                                  return Colors.orangeAccent;
-                                }),
-                              ),
-                              label: const Text(
-                                'Premium',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: SizedBox(
-                        height: 20,
-                        child: Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Positioned(
-                              top: -30,
-                              child: Row(
-                                children: [
-                                  Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      ColorFiltered(
-                                        colorFilter: ColorFilter.mode(
-                                          Colors.black45.withOpacity(0.2),
-                                          BlendMode.srcATop,
-                                        ),
-                                        child: SizedBox(
-                                          height: 50,
-                                          child: Image.asset(
-                                              showFactionImage(state.faction!)),
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.all(2),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.black.withOpacity(0.5),
-                                        ),
-                                        child: Text(
-                                          state.level.toString(),
-                                          style: const TextStyle(
-                                            fontSize: 17,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(width: 5),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(state.name!),
-                                      const SizedBox(height: 5),
-                                      GradientButton(
-                                        title: 'Editar',
-                                        callback: () => {},
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Wrap(
-                        alignment: WrapAlignment.spaceBetween,
-                        runSpacing: 20,
-                        spacing: Get.width * 0.10,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                toFaction(state.faction!),
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const Text('facção'),
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: const [
-                              Text(
-                                'Nenhuma tripulação',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text('tripulação'),
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              if (state.faction == 'PIRATE') ...[
-                                Text(
-                                  numberAbbreviation(state.bounty),
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const Text('bounty'),
-                              ] else ...[
-                                Text(
-                                  numberAbbreviation(state.fame),
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const Text('fame'),
-                              ]
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                numberAbbreviation(state.power),
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const Text('poder'),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: InkWell(
-                        onTap: launchDiscord,
-                        borderRadius: BorderRadius.circular(10),
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Row(
-                              children: const [
-                                Icon(Icons.discord),
-                                SizedBox(width: 5),
-                                Expanded(
-                                  child: Text(
-                                    'Toque para acessar o grupo do discord do jogo. Venha-se divertir com a comunidade e tire suas dúvidas.',
-                                    style: TextStyle(fontSize: 13),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  IconButton(
-                                    onPressed: () => {},
-                                    icon: const Icon(Icons.info),
-                                  ),
-                                  const SizedBox(width: 5),
-                                  const Text(
-                                    'Atributos',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              _columnAttribute(
-                                'Soco',
-                                state.attribute!.punch!,
-                                state.attribute!.punch!,
-                                0.9,
-                                RpgAwesome.muscle_up,
-                              ),
-                              _columnAttribute(
-                                'Defesa',
-                                state.attribute!.defense!,
-                                state.attribute!.defense!,
-                                0.9,
-                                RpgAwesome.round_shield,
-                              ),
-                              _columnAttribute(
-                                'Espada',
-                                state.attribute!.sword!,
-                                state.attribute!.sword!,
-                                0.9,
-                                RpgAwesome.broadsword,
-                              ),
-                              _columnAttribute(
-                                'Arma',
-                                state.attribute!.weapon!,
-                                state.attribute!.weapon!,
-                                0.9,
-                                RpgAwesome.musket,
-                              ),
-                              _columnAttribute(
-                                'Fruta',
-                                state.attribute!.fruit!,
-                                state.attribute!.fruit!,
-                                0.9,
-                                RpgAwesome.trefoil_lily,
-                              ),
-                              GradientButton(
-                                title: 'Treinar',
-                                callback: () => {},
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () => {},
-                                icon: const Icon(Icons.info),
-                              ),
-                              const SizedBox(width: 5),
-                              const Text(
-                                'Estatísticas',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          GridView.count(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            crossAxisCount: 4,
-                            mainAxisSpacing: 5,
-                            crossAxisSpacing: 5,
-                            childAspectRatio: 0.65,
-                            padding: const EdgeInsets.only(top: 10),
-                            children: [
-                              _statisticsCard(
-                                'Experiência',
-                                state.experience!,
-                                1000,
-                              ),
-                              _statisticsCard(
-                                'Vitórias de honra',
-                                state.honorWin!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Batalhas totais',
-                                state.totalBattle!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Vitórias',
-                                state.win!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Derrotas',
-                                state.defeat!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Empates',
-                                state.draw!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Dano causado',
-                                state.damageHit!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Dano sofrido',
-                                state.damageTaken!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Belly conquistado',
-                                state.bellyWon!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Belly perdido',
-                                state.bellyLost!,
-                                0,
-                              ),
-                              _statisticsCard(
-                                'Pontos',
-                                state.score!,
-                                0,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    Stack(
+        return Scaffold(
+          key: controller.sideBarController.key,
+          extendBodyBehindAppBar: true,
+          appBar: CustomAppBar(
+            title: 'Visão Geral',
+            offset: controller.offset.value,
+            isHome: true,
+            minOffset: 10,
+          ),
+          body: controller.obx(
+            (state) => SingleChildScrollView(
+              controller: controller.scrollController,
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  const SizedBox(height: 56),
+                  SizedBox(
+                    height: 250,
+                    child: Stack(
                       children: [
                         Container(
                           decoration: BoxDecoration(
                             color: lightBackgroundColor.withOpacity(0.3),
                           ),
                           width: double.infinity,
-                          height: 150,
+                          height: 250,
+                          child: CustomShaderMask(
+                            image: getPortraitAvatar(
+                              state!.character!.id!,
+                              state.image!,
+                            ),
+                            fit: BoxFit.contain,
+                          ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  IconButton(
-                                    onPressed: _showBiography,
-                                    icon: const Icon(Icons.edit),
-                                  ),
-                                  const SizedBox(width: 5),
-                                  const Text(
-                                    'Biografia',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
+                        Positioned(
+                          top: 5,
+                          right: 5,
+                          child: OutlinedButton.icon(
+                            onPressed: () => {},
+                            icon: const Icon(
+                              Icons.star,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith<Color>(
+                                      (states) {
+                                if (states.contains(MaterialState.disabled)) {
+                                  return Colors.grey.withOpacity(0.5);
+                                }
+                                return Colors.orangeAccent;
+                              }),
+                            ),
+                            label: const Text(
+                              'Premium',
+                              style: TextStyle(
+                                color: Colors.white,
                               ),
-                              Text(state.biography ??
-                                  'Nenhuma biografia adicionada'),
-                            ],
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ),
-              onEmpty: getError(),
-              onError: (dynamic error) {
-                final ResponseModel responseModel =
-                    responseModelFromJson(error);
-                return getError(message: responseModel.message);
-              },
-              onLoading: const Center(
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
-                ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: SizedBox(
+                      height: 20,
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                            top: -30,
+                            child: Row(
+                              children: [
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    ColorFiltered(
+                                      colorFilter: ColorFilter.mode(
+                                        Colors.black45.withOpacity(0.2),
+                                        BlendMode.srcATop,
+                                      ),
+                                      child: SizedBox(
+                                        height: 50,
+                                        child: Image.asset(
+                                            showFactionImage(state.faction!)),
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.all(2),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.black.withOpacity(0.5),
+                                      ),
+                                      child: Text(
+                                        state.level.toString(),
+                                        style: const TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(width: 5),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(state.name!),
+                                    const SizedBox(height: 5),
+                                    GradientButton(
+                                      title: 'Editar',
+                                      callback: () => {},
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      runSpacing: 20,
+                      spacing: Get.width * 0.10,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              toFaction(state.faction!),
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Text('facção'),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: const [
+                            Text(
+                              'Nenhuma tripulação',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text('tripulação'),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            if (state.faction == 'PIRATE') ...[
+                              Text(
+                                numberAbbreviation(state.bounty),
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const Text('bounty'),
+                            ] else ...[
+                              Text(
+                                numberAbbreviation(state.fame),
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const Text('fame'),
+                            ]
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              numberAbbreviation(state.power),
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Text('poder'),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: InkWell(
+                      onTap: launchDiscord,
+                      borderRadius: BorderRadius.circular(10),
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: const [
+                              Icon(Icons.discord),
+                              SizedBox(width: 5),
+                              Expanded(
+                                child: Text(
+                                  'Toque para acessar o grupo do discord do jogo. Venha-se divertir com a comunidade e tire suas dúvidas.',
+                                  style: TextStyle(fontSize: 13),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () => {},
+                                  icon: const Icon(Icons.info),
+                                ),
+                                const SizedBox(width: 5),
+                                const Text(
+                                  'Atributos',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            _columnAttribute(
+                              'Soco',
+                              state.attribute!.punch!,
+                              state.attribute!.punch!,
+                              0.9,
+                              RpgAwesome.muscle_up,
+                            ),
+                            _columnAttribute(
+                              'Defesa',
+                              state.attribute!.defense!,
+                              state.attribute!.defense!,
+                              0.9,
+                              RpgAwesome.round_shield,
+                            ),
+                            _columnAttribute(
+                              'Espada',
+                              state.attribute!.sword!,
+                              state.attribute!.sword!,
+                              0.9,
+                              RpgAwesome.broadsword,
+                            ),
+                            _columnAttribute(
+                              'Arma',
+                              state.attribute!.weapon!,
+                              state.attribute!.weapon!,
+                              0.9,
+                              RpgAwesome.musket,
+                            ),
+                            _columnAttribute(
+                              'Fruta',
+                              state.attribute!.fruit!,
+                              state.attribute!.fruit!,
+                              0.9,
+                              RpgAwesome.trefoil_lily,
+                            ),
+                            GradientButton(
+                              title: 'Treinar',
+                              callback: () => {},
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: () => {},
+                              icon: const Icon(Icons.info),
+                            ),
+                            const SizedBox(width: 5),
+                            const Text(
+                              'Estatísticas',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        GridView.count(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          crossAxisCount: 4,
+                          mainAxisSpacing: 5,
+                          crossAxisSpacing: 5,
+                          childAspectRatio: 0.65,
+                          padding: const EdgeInsets.only(top: 10),
+                          children: [
+                            _statisticsCard(
+                              'Experiência',
+                              state.experience!,
+                              1000,
+                            ),
+                            _statisticsCard(
+                              'Vitórias de honra',
+                              state.honorWin!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Batalhas totais',
+                              state.totalBattle!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Vitórias',
+                              state.win!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Derrotas',
+                              state.defeat!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Empates',
+                              state.draw!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Dano causado',
+                              state.damageHit!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Dano sofrido',
+                              state.damageTaken!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Belly conquistado',
+                              state.bellyWon!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Belly perdido',
+                              state.bellyLost!,
+                              0,
+                            ),
+                            _statisticsCard(
+                              'Pontos',
+                              state.score!,
+                              0,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: lightBackgroundColor.withOpacity(0.3),
+                        ),
+                        width: double.infinity,
+                        height: 150,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: _showBiography,
+                                  icon: const Icon(Icons.edit),
+                                ),
+                                const SizedBox(width: 5),
+                                const Text(
+                                  'Biografia',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text(state.biography ??
+                                'Nenhuma biografia adicionada'),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
-            drawer: const SideBar(),
-            bottomNavigationBar: const CustomBottomNavigationBar(),
+            onEmpty: getError(),
+            onError: (dynamic error) {
+              final ResponseModel responseModel = responseModelFromJson(error);
+              return getError(message: responseModel.message);
+            },
+            onLoading: const Center(
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+              ),
+            ),
           ),
+          drawer: const SideBar(),
+          bottomNavigationBar: const CustomBottomNavigationBar(),
         );
       }),
     );

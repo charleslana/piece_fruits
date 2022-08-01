@@ -79,11 +79,11 @@ class OverviewController extends GetxController
         .then(
       (result) {
         goBack();
+        goBack();
         showToast(result.message!, ToastEnum.success);
-        hideLoading();
       },
       onError: (dynamic error) {
-        hideLoading();
+        goBack();
         final ResponseModel responseModel = responseModelFromJson(error);
         showToast(responseModel.message!, ToastEnum.error);
       },

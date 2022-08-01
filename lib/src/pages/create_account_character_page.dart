@@ -7,7 +7,6 @@ import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:piece_fruits/src/components/custom_app_bar.dart';
 import 'package:piece_fruits/src/components/custom_shader_mask.dart';
 import 'package:piece_fruits/src/components/gradient_button.dart';
-import 'package:piece_fruits/src/components/loading_overlay.dart';
 import 'package:piece_fruits/src/constants/color_constant.dart';
 import 'package:piece_fruits/src/constants/data_constant.dart';
 import 'package:piece_fruits/src/constants/image_constant.dart';
@@ -33,41 +32,39 @@ class CreateAccountCharacterPage
               offset: controller.offset.value,
               isGoBack: true,
             ),
-            body: LoadingOverlay(
-              child: Center(
-                child: controller.obx(
-                  (state) => SingleChildScrollView(
-                    controller: controller.scrollController,
-                    physics: const BouncingScrollPhysics(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Obx(() {
-                        return Stepper(
-                          physics: const ScrollPhysics(),
-                          controlsBuilder: _controlsBuilder,
-                          currentStep: controller.currentStep.value,
-                          onStepTapped: _onStepTapped,
-                          onStepContinue: _onStepContinue,
-                          onStepCancel: _onStepCancel,
-                          steps: [
-                            _infoSTep(),
-                            _characterStep(state),
-                            _resultStep(),
-                          ],
-                        );
-                      }),
-                    ),
+            body: Center(
+              child: controller.obx(
+                (state) => SingleChildScrollView(
+                  controller: controller.scrollController,
+                  physics: const BouncingScrollPhysics(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Obx(() {
+                      return Stepper(
+                        physics: const ScrollPhysics(),
+                        controlsBuilder: _controlsBuilder,
+                        currentStep: controller.currentStep.value,
+                        onStepTapped: _onStepTapped,
+                        onStepContinue: _onStepContinue,
+                        onStepCancel: _onStepCancel,
+                        steps: [
+                          _infoSTep(),
+                          _characterStep(state),
+                          _resultStep(),
+                        ],
+                      );
+                    }),
                   ),
-                  onEmpty: getError(),
-                  onError: (dynamic error) {
-                    final ResponseModel responseModel =
-                        responseModelFromJson(error);
-                    return getError(message: responseModel.message);
-                  },
-                  onLoading: const Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
-                    ),
+                ),
+                onEmpty: getError(),
+                onError: (dynamic error) {
+                  final ResponseModel responseModel =
+                      responseModelFromJson(error);
+                  return getError(message: responseModel.message);
+                },
+                onLoading: const Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
                   ),
                 ),
               ),
