@@ -26,9 +26,8 @@ class OverviewPage extends GetView<OverviewController> {
           key: controller.sideBarController.key,
           extendBodyBehindAppBar: true,
           appBar: CustomAppBar(
-            title: 'Visão Geral',
+            title: 'overview.page.title'.tr,
             offset: controller.offset.value,
-            isHome: true,
             minOffset: 10,
           ),
           body: controller.obx(
@@ -84,9 +83,9 @@ class OverviewPage extends GetView<OverviewController> {
                                   return Colors.orangeAccent;
                                 }),
                               ),
-                              label: const Text(
-                                'Premium',
-                                style: TextStyle(
+                              label: Text(
+                                'overview.page.premium.button'.tr,
+                                style: const TextStyle(
                                   color: Colors.white,
                                 ),
                               ),
@@ -145,7 +144,7 @@ class OverviewPage extends GetView<OverviewController> {
                                       Text(state.name!),
                                       const SizedBox(height: 5),
                                       GradientButton(
-                                        title: 'Editar',
+                                        title: 'overview.page.edit.button'.tr,
                                         callback: () => {},
                                       ),
                                     ],
@@ -174,20 +173,20 @@ class OverviewPage extends GetView<OverviewController> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const Text('facção'),
+                              Text('overview.page.faction'.tr),
                             ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: const [
+                            children: [
                               Text(
-                                'Nenhuma tripulação',
-                                style: TextStyle(
+                                'overview.page.no.crew'.tr,
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Text('tripulação'),
+                              Text('overview.page.crew'.tr),
                             ],
                           ),
                           Column(
@@ -201,7 +200,7 @@ class OverviewPage extends GetView<OverviewController> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                const Text('bounty'),
+                                Text('overview.page.bounty'.tr),
                               ] else ...[
                                 Text(
                                   numberAbbreviation(state.fame),
@@ -210,7 +209,7 @@ class OverviewPage extends GetView<OverviewController> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                const Text('fame'),
+                                Text('overview.page.fame'.tr),
                               ]
                             ],
                           ),
@@ -224,7 +223,7 @@ class OverviewPage extends GetView<OverviewController> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const Text('poder'),
+                              Text('overview.page.power'.tr),
                             ],
                           ),
                         ],
@@ -239,13 +238,13 @@ class OverviewPage extends GetView<OverviewController> {
                           child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Row(
-                              children: const [
-                                Icon(Icons.discord),
-                                SizedBox(width: 5),
+                              children: [
+                                const Icon(Icons.discord),
+                                const SizedBox(width: 5),
                                 Expanded(
                                   child: Text(
-                                    'Toque para acessar o grupo do discord do jogo. Venha-se divertir com a comunidade e tire suas dúvidas.',
-                                    style: TextStyle(fontSize: 13),
+                                    'overview.page.discord.message'.tr,
+                                    style: const TextStyle(fontSize: 13),
                                   ),
                                 ),
                               ],
@@ -269,9 +268,9 @@ class OverviewPage extends GetView<OverviewController> {
                                     icon: const Icon(Icons.info),
                                   ),
                                   const SizedBox(width: 5),
-                                  const Text(
-                                    'Atributos',
-                                    style: TextStyle(
+                                  Text(
+                                    'overview.page.attributes'.tr,
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -279,42 +278,42 @@ class OverviewPage extends GetView<OverviewController> {
                                 ],
                               ),
                               _columnAttribute(
-                                'Soco',
+                                'overview.page.attribute.punch'.tr,
                                 attributes[0],
                                 state.attribute!.punch!,
                                 calculateBar(attributes[0], attributes),
                                 RpgAwesome.muscle_up,
                               ),
                               _columnAttribute(
-                                'Defesa',
+                                'overview.page.attribute.defense'.tr,
                                 attributes[1],
                                 state.attribute!.defense!,
                                 calculateBar(attributes[1], attributes),
                                 RpgAwesome.round_shield,
                               ),
                               _columnAttribute(
-                                'Espada',
+                                'overview.page.attribute.sword'.tr,
                                 attributes[2],
                                 state.attribute!.sword!,
                                 calculateBar(attributes[2], attributes),
                                 RpgAwesome.broadsword,
                               ),
                               _columnAttribute(
-                                'Arma',
+                                'overview.page.attribute.weapon'.tr,
                                 attributes[3],
                                 state.attribute!.weapon!,
                                 calculateBar(attributes[3], attributes),
                                 RpgAwesome.musket,
                               ),
                               _columnAttribute(
-                                'Fruta',
+                                'overview.page.attribute.fruit'.tr,
                                 attributes[4],
                                 state.attribute!.fruit!,
                                 calculateBar(attributes[4], attributes),
                                 RpgAwesome.trefoil_lily,
                               ),
                               GradientButton(
-                                title: 'Treinar',
+                                title: 'overview.page.train.button'.tr,
                                 callback: () => {},
                               ),
                             ],
@@ -334,9 +333,9 @@ class OverviewPage extends GetView<OverviewController> {
                                 icon: const Icon(Icons.info),
                               ),
                               const SizedBox(width: 5),
-                              const Text(
-                                'Estatísticas',
-                                style: TextStyle(
+                              Text(
+                                'overview.page.statistics'.tr,
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -353,57 +352,57 @@ class OverviewPage extends GetView<OverviewController> {
                             padding: const EdgeInsets.only(top: 10),
                             children: [
                               _statisticsCard(
-                                'Experiência',
+                                'overview.page.experience'.tr,
                                 state.experience!,
                                 1000,
                               ),
                               _statisticsCard(
-                                'Vitórias de honra',
+                                'overview.page.honor.win'.tr,
                                 state.honorWin!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Batalhas totais',
+                                'overview.page.total.battle'.tr,
                                 state.totalBattle!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Vitórias',
+                                'overview.page.win'.tr,
                                 state.win!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Derrotas',
+                                'overview.page.defeat'.tr,
                                 state.defeat!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Empates',
+                                'overview.page.draw'.tr,
                                 state.draw!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Dano causado',
+                                'overview.page.damage.hit'.tr,
                                 state.damageHit!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Dano sofrido',
+                                'overview.page.damage.taken'.tr,
                                 state.damageTaken!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Belly conquistado',
+                                'overview.page.belly.won'.tr,
                                 state.bellyWon!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Belly perdido',
+                                'overview.page.belly.lost'.tr,
                                 state.bellyLost!,
                                 0,
                               ),
                               _statisticsCard(
-                                'Pontos',
+                                'overview.page.score'.tr,
                                 state.score!,
                                 0,
                               ),
@@ -434,9 +433,9 @@ class OverviewPage extends GetView<OverviewController> {
                                     icon: const Icon(Icons.edit),
                                   ),
                                   const SizedBox(width: 5),
-                                  const Text(
-                                    'Biografia',
-                                    style: TextStyle(
+                                  Text(
+                                    'overview.page.biography'.tr,
+                                    style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -444,7 +443,7 @@ class OverviewPage extends GetView<OverviewController> {
                                 ],
                               ),
                               Text(state.biography ??
-                                  'Nenhuma biografia adicionada'),
+                                  'overview.page.no.biography'.tr),
                             ],
                           ),
                         ),
@@ -507,9 +506,9 @@ class OverviewPage extends GetView<OverviewController> {
                   ),
                 ),
                 const SizedBox(width: 5),
-                const Text(
-                  'base',
-                  style: TextStyle(
+                Text(
+                  'overview.page.base.attribute'.tr,
+                  style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
@@ -612,16 +611,15 @@ class OverviewPage extends GetView<OverviewController> {
                   controller: controller.biographyController,
                   maxLines: 7,
                   maxLength: 200,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     errorMaxLines: 3,
-                    hintText:
-                        'Insira uma breve biografia para aparecer em seu perfil',
+                    hintText: 'overview.page.enter.biography'.tr,
                   ),
                   validator: controller.validator,
                 ),
                 const SizedBox(height: 10),
                 GradientButton(
-                  title: 'Salvar',
+                  title: 'overview.page.biography.save.button'.tr,
                   fontSize: 13,
                   callback: controller.updateBiography,
                 ),

@@ -95,7 +95,7 @@ class OverviewController extends GetxController
       return 'validation.field.empty'.tr;
     }
     if (value.trim().length < 10 || value.trim().length > 200) {
-      return 'validation.field.name.length'.tr;
+      return 'overview.validation.field.biography.length'.tr;
     }
     return null;
   }

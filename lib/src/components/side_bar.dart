@@ -193,12 +193,12 @@ class SideBar extends GetView<SideBarController> {
                           _rowDrawerHeader(
                             Icons.access_time,
                             const Clock(),
-                            'hora do jogo',
+                            'side.bar.game.time'.tr,
                           ),
                           _rowDrawerHeader(
                             Icons.shield_outlined,
-                            const Text('Vulnerável'),
-                            'imunidade',
+                            Text('side.bar.no.immunity'.tr),
+                            'side.bar.immunity'.tr,
                           ),
                         ],
                       ),
@@ -208,8 +208,8 @@ class SideBar extends GetView<SideBarController> {
                 ),
               ),
               _listTile(
-                'Visão geral',
-                'Este é a visão geral dos dados do seu personagem',
+                'side.bar.menu.overview.title'.tr,
+                'side.bar.menu.overview.subtitle'.tr,
                 Icons.home,
                 () => {
                   Navigator.pop(context),
@@ -221,14 +221,14 @@ class SideBar extends GetView<SideBarController> {
                 child: Divider(),
               ),
               _listTile(
-                'Trocar de personagem',
-                'Alterne entre os personagens da sua conta',
+                'side.bar.menu.change.character.title'.tr,
+                'side.bar.menu.change.character.subtitle'.tr,
                 Icons.switch_account_outlined,
                 () => controller.logoutAccountCharacter(),
               ),
               _listTile(
-                'Sair',
-                'Faça logout da sua conta para realizar o login novamente',
+                'side.bar.menu.logout.title'.tr,
+                'side.bar.menu.logout.subtitle'.tr,
                 Icons.logout,
                 () => controller.logoutAccount(),
               ),
