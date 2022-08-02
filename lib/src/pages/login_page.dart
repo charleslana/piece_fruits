@@ -87,6 +87,7 @@ class LoginPage extends StatelessWidget {
                             controller.goToTop();
                             navigate(registerRoute);
                           },
+                          isInk: false,
                         ),
                       ],
                     ),

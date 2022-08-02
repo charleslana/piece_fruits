@@ -22,6 +22,7 @@ final Map<String, String> enUS = {
   'side.bar.menu.change.character.title': 'Change character',
   'side.bar.menu.change.character.subtitle':
       'Switch between characters on your account',
+  'custom.bottom.navigation.menu': 'Menu',
   'side.bar.menu.logout.title': 'Logout',
   'side.bar.menu.logout.subtitle': 'Log out of your account to log in again',
   'dialog.confirmation.title': 'Attention!',
@@ -147,6 +148,7 @@ final Map<String, String> ptBR = {
   'side.bar.menu.logout.title': 'Sair',
   'side.bar.menu.logout.subtitle':
       'Faça logout da sua conta para realizar o login novamente',
+  'custom.bottom.navigation.menu': 'Menu',
   'dialog.confirmation.title': 'Atenção!',
   'dialog.confirmation.cancel.button': 'Cancelar',
   'dialog.confirmation.confirm.button': 'Confirmar',
@@ -270,6 +272,7 @@ final Map<String, String> esES = {
   'side.bar.menu.logout.title': 'Cerrar sesión',
   'side.bar.menu.logout.subtitle':
       'Sal de tu cuenta para volver a iniciar sesión',
+  'custom.bottom.navigation.menu': 'Menú',
   'dialog.confirmation.title': '¡Aviso!',
   'dialog.confirmation.cancel.button': 'Cancelar',
   'dialog.confirmation.confirm.button': 'Confirmar',

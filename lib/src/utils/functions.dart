@@ -7,13 +7,6 @@ import 'package:piece_fruits/src/models/response_model.dart';
 import 'package:piece_fruits/src/services/login_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void _closeToast() {
-  if (Get.isSnackbarOpen) {
-    Get.back<dynamic>();
-    return;
-  }
-}
-
 double calculateBar(int attribute, List<int> attributes) {
   final int sumAttributes =
       attributes.fold<int>(0, (int sum, int item) => sum + item);
@@ -26,6 +19,13 @@ double calculateBar(int attribute, List<int> attributes) {
 
 void closeKeyboard() {
   FocusManager.instance.primaryFocus?.unfocus();
+}
+
+void closeToast() {
+  if (Get.isSnackbarOpen) {
+    Get.back<dynamic>();
+    return;
+  }
 }
 
 void goBack() {
@@ -64,7 +64,7 @@ String numberAbbreviation(dynamic myNumber) {
 }
 
 void showConfirmation(VoidCallback callback) {
-  _closeToast();
+  closeToast();
   Get.defaultDialog<dynamic>(
     onConfirm: () => {
       goBack(),
@@ -104,7 +104,7 @@ void showLoading() {
 }
 
 void showToast(String message, ToastEnum toast) {
-  _closeToast();
+  closeToast();
   Get.rawSnackbar(
     messageText: Column(
       children: [

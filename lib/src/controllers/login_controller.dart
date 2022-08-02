@@ -53,6 +53,7 @@ class LoginController extends GetxController
   void login() {
     closeKeyboard();
     if (loginFormKey.currentState!.validate()) {
+      closeToast();
       showLoading();
       validateLogin(emailController.text, passwordController.text);
     }

@@ -11,28 +11,28 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       onTap: _showNavigation,
       elevation: 0,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.menu),
-          label: 'Menu',
+          icon: const Icon(Icons.menu),
+          label: 'custom.bottom.navigation.menu'.tr,
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(Icons.email),
           label: '',
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(RpgAwesome.vest),
           label: '',
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(RpgAwesome.battered_axe),
           label: '',
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(RpgAwesome.flaming_claw),
           label: '',
         ),
-        BottomNavigationBarItem(
+        const BottomNavigationBarItem(
           icon: Icon(RpgAwesome.crossed_swords),
           label: '',
         ),

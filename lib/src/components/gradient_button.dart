@@ -6,20 +6,20 @@ class GradientButton extends StatelessWidget {
     required this.title,
     this.callback,
     this.fontSize,
-    this.isStep = false,
+    this.isInk = true,
   }) : super(key: key);
 
   final String title;
   final double? fontSize;
   final VoidCallback? callback;
-  final bool isStep;
+  final bool isInk;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(25),
       onTap: callback,
-      child: isStep ? _container() : _ink(),
+      child: isInk ? _ink() : _container(),
     );
   }
 

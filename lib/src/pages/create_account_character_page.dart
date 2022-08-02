@@ -270,7 +270,7 @@ class CreateAccountCharacterPage
             GradientButton(
               title: 'create.account.character.page.button.back'.tr,
               callback: controlsDetails.onStepCancel,
-              isStep: true,
+              isInk: false,
             ),
           GradientButton(
             title: controller.currentStep.value < 2
@@ -279,7 +279,7 @@ class CreateAccountCharacterPage
             callback: controller.currentStep.value < 2
                 ? controlsDetails.onStepContinue
                 : controller.create,
-            isStep: true,
+            isInk: false,
           ),
         ],
       ),
