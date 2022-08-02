@@ -281,35 +281,40 @@ class OverviewPage extends GetView<OverviewController> {
                                 'overview.page.attribute.punch'.tr,
                                 attributes[0],
                                 state.attribute!.punch!,
-                                calculateBar(attributes[0], attributes),
+                                calculateAttributeBar(
+                                    attributes[0], attributes),
                                 RpgAwesome.muscle_up,
                               ),
                               _columnAttribute(
                                 'overview.page.attribute.defense'.tr,
                                 attributes[1],
                                 state.attribute!.defense!,
-                                calculateBar(attributes[1], attributes),
+                                calculateAttributeBar(
+                                    attributes[1], attributes),
                                 RpgAwesome.round_shield,
                               ),
                               _columnAttribute(
                                 'overview.page.attribute.sword'.tr,
                                 attributes[2],
                                 state.attribute!.sword!,
-                                calculateBar(attributes[2], attributes),
+                                calculateAttributeBar(
+                                    attributes[2], attributes),
                                 RpgAwesome.broadsword,
                               ),
                               _columnAttribute(
                                 'overview.page.attribute.weapon'.tr,
                                 attributes[3],
                                 state.attribute!.weapon!,
-                                calculateBar(attributes[3], attributes),
+                                calculateAttributeBar(
+                                    attributes[3], attributes),
                                 RpgAwesome.musket,
                               ),
                               _columnAttribute(
                                 'overview.page.attribute.fruit'.tr,
                                 attributes[4],
                                 state.attribute!.fruit!,
-                                calculateBar(attributes[4], attributes),
+                                calculateAttributeBar(
+                                    attributes[4], attributes),
                                 RpgAwesome.trefoil_lily,
                               ),
                               GradientButton(

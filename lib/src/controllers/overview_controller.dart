@@ -63,7 +63,6 @@ class OverviewController extends GetxController
   void updateBiography() {
     closeKeyboard();
     if (overViewFormKey.currentState!.validate()) {
-      closeToast();
       showLoading();
       final UpdateAccountCharacterModel updateAccountCharacterModel =
           UpdateAccountCharacterModel(

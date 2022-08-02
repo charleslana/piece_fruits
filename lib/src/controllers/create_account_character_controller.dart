@@ -74,7 +74,6 @@ class CreateAccountCharacterController extends GetxController
 
   void create() {
     if (createAccountCharacterFormKey.currentState!.validate()) {
-      closeToast();
       showLoading();
       final CreateAccountCharacterModel createAccountCharacterModel =
           CreateAccountCharacterModel(

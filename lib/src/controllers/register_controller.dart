@@ -61,7 +61,6 @@ class RegisterController extends GetxController
   void register() {
     closeKeyboard();
     if (registerFormKey.currentState!.validate()) {
-      closeToast();
       showLoading();
       final RegisterModel registerModel = RegisterModel(
         email: emailController.text,
