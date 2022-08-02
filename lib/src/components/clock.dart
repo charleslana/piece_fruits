@@ -11,7 +11,7 @@ class Clock extends StatelessWidget {
       builder: (context, snapshot) {
         return Center(
           child: Text(
-            DateFormat('hh:mm:ss').format(DateTime.now()),
+            DateFormat('HH:mm:ss').format(DateTime.now()),
           ),
         );
       },
