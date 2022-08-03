@@ -50,6 +50,15 @@ class OverviewController extends GetxController
     });
   }
 
+  @override
+  void scrollTo(double position) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (scrollController.hasClients) {
+        scrollController.jumpTo(position);
+      }
+    });
+  }
+
   Future<void> _fetchDetailsCharacter() async {
     change(null, status: RxStatus.loading());
     await accountCharacterService.getDetailsAccountCharacter().then((result) {
@@ -81,6 +90,8 @@ class OverviewController extends GetxController
         goBack();
         goBack();
         showToast(result.message!, ToastEnum.success);
+        final double position = scrollController.offset;
+        _fetchDetailsCharacter().then((_) => scrollTo(position));
       },
       onError: (dynamic error) {
         goBack();

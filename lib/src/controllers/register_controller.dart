@@ -58,6 +58,11 @@ class RegisterController extends GetxController
     });
   }
 
+  @override
+  void scrollTo(double position) {
+    // TODO: implement scrollTo
+  }
+
   void register() {
     closeKeyboard();
     if (registerFormKey.currentState!.validate()) {

@@ -46,6 +46,11 @@ class AccountCharacterController extends GetxController
     });
   }
 
+  @override
+  void scrollTo(double position) {
+    // TODO: implement scrollTo
+  }
+
   Future<void> _fetchAllAccountCharacters() async {
     change(null, status: RxStatus.loading());
     await accountCharacterService.getAllAccountCharacters().then((result) {

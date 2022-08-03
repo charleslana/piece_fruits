@@ -50,6 +50,11 @@ class LoginController extends GetxController
     });
   }
 
+  @override
+  void scrollTo(double position) {
+    // TODO: implement scrollTo
+  }
+
   void login() {
     closeKeyboard();
     if (loginFormKey.currentState!.validate()) {
